@@ -196,21 +196,6 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/svm/ipynb/svm.ipynb"
 
 
-===== Solving ordinary and partial differential equations with Neural Networks =====
-
-
-
- * LaTeX PDF:
-   * For printing:
-     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/odenn/pdf/odenn-minted.pdf"
- * HTML:
-   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/odenn/html/odenn.html"
-   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/odenn/html/odenn-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/odenn/html/odenn-bs.html"
- * Jupyter notebook:
-   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/odenn/ipynb/odenn.ipynb"
-
-
 
 
 !split

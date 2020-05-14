@@ -1,6 +1,6 @@
 # Strange way of testing for vortex...
 # #ifdef NON_VORTEX
-TITLE: Overview of course material: Computational Physics
+TITLE: Overview of course material
 
 TOC: off
 # #else
@@ -11,7 +11,7 @@ AUTHOR: "Morten Hjorth-Jensen":"http://mhjgit.github.io/info/doc/web/" at Depart
 
 <%
 pub_url = 'https://compphysics.github.io/MLErasmus/doc/pub'
-published = ['Introduction', 'How2ReadData', 'Linalg', 'Statistics',  'Regression', 'Splines', 'LogReg', 'NeuralNet', 'DimRed', 'DecisionTrees', 'svm',  'odenn',]
+published = ['Introduction', 'How2ReadData', 'Linalg', 'Statistics',  'Regression', 'Splines', 'LogReg', 'NeuralNet', 'DimRed', 'DecisionTrees', 'svm',]
 chapters = {
  'Introduction': 'Introduction to Data Analysis and Machine Learning',
  'How2ReadData': 'Getting started with Machine Learning',
@@ -24,7 +24,6 @@ chapters = {
  'DimRed': 'Reduction of dimensionality',
  'DecisionTrees': 'Decision trees, from simple to random ones',
  'svm': 'Support Vector Machines',
- 'odenn': 'Solving ordinary and partial differential equations with Neural Networks',
 }
 %>
 

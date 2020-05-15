@@ -1,11 +1,11 @@
-# Machine Learning weeks at MSU-FRIB, May 2020
-This repository contains all learning material pertinent to the Machine Learning course  at FRIB@MSU, from May 18, 2020.
+# Machine Learning weeks at MSU-FRIB/NSCL, May 2020
+This repository contains all learning material pertinent to the Machine Learning course  at FRIB/NSCL@MSU, from May 18, 2020.
 
 Here you will find a general overview of the course, with teaching schedule and link to material
 
 ## Lectures
 
-We plan to have lectures MTWTF (all days) from 10am to 12pm, with breaks and question sessions, and possible exercise and further question sessions 2pm-3pm
+We plan to have lectures MTWTF (all days) from 10am to 12pm, with breaks and question sessions, and possible exercise and further question and answer sessions 2pm-3pm
 
 
 ##  Teaching schedule with links to material (This will be updated by May 17, stay tuned)

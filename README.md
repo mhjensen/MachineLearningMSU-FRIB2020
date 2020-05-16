@@ -11,7 +11,7 @@ We plan to have lectures MTWTF (all days) from 10am to 12pm, with breaks and que
 ##  Teaching schedule with links to material (This will be updated by May 17, stay tuned)
 
 ###  May 18-22, 2020
-- Monday: Introduction to Machine Learning, with an emphasis on Linear Regression
+- Monday: Introduction to Machine Learning, with an emphasis on Linear Regression, see https://compphysics.github.io/MLErasmus/doc/pub/How2ReadData/html/How2ReadData-bs.html
 - Tuesday: Discussion of linear regression examples, hands-on exercises
 - Wednesday: Logistic regression and classification problems, introducing gradient descent
 - Thursday: More on optimization and gradient descent

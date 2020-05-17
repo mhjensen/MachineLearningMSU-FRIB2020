@@ -37,13 +37,13 @@ formulas in HTML or ipython notebook files.
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Introduction/pdf/Introduction-minted.pdf"
+     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Introduction/pdf/Introduction-minted.pdf"
  * HTML:
-   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Introduction/html/Introduction.html"
-   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Introduction/html/Introduction-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Introduction/html/Introduction-bs.html"
+   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Introduction/html/Introduction.html"
+   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Introduction/html/Introduction-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Introduction/html/Introduction-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Introduction/ipynb/Introduction.ipynb"
+   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Introduction/ipynb/Introduction.ipynb"
 
 
 ===== Getting started with Machine Learning =====
@@ -52,13 +52,13 @@ formulas in HTML or ipython notebook files.
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/How2ReadData/pdf/How2ReadData-minted.pdf"
+     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/How2ReadData/pdf/How2ReadData-minted.pdf"
  * HTML:
-   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/How2ReadData/html/How2ReadData.html"
-   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/How2ReadData/html/How2ReadData-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/How2ReadData/html/How2ReadData-bs.html"
+   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/How2ReadData/html/How2ReadData.html"
+   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/How2ReadData/html/How2ReadData-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/How2ReadData/html/How2ReadData-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/How2ReadData/ipynb/How2ReadData.ipynb"
+   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/How2ReadData/ipynb/How2ReadData.ipynb"
 
 
 ===== Review of central linear algebra elements =====
@@ -67,13 +67,13 @@ formulas in HTML or ipython notebook files.
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Linalg/pdf/Linalg-minted.pdf"
+     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Linalg/pdf/Linalg-minted.pdf"
  * HTML:
-   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Linalg/html/Linalg.html"
-   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Linalg/html/Linalg-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Linalg/html/Linalg-bs.html"
+   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Linalg/html/Linalg.html"
+   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Linalg/html/Linalg-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Linalg/html/Linalg-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Linalg/ipynb/Linalg.ipynb"
+   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Linalg/ipynb/Linalg.ipynb"
 
 
 ===== Monte Carlo methods and elements of probability theory =====
@@ -82,13 +82,13 @@ formulas in HTML or ipython notebook files.
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Statistics/pdf/Statistics-minted.pdf"
+     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Statistics/pdf/Statistics-minted.pdf"
  * HTML:
-   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Statistics/html/Statistics.html"
-   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Statistics/html/Statistics-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Statistics/html/Statistics-bs.html"
+   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Statistics/html/Statistics.html"
+   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Statistics/html/Statistics-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Statistics/html/Statistics-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Statistics/ipynb/Statistics.ipynb"
+   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Statistics/ipynb/Statistics.ipynb"
 
 
 ===== Regression Methods =====
@@ -97,13 +97,13 @@ formulas in HTML or ipython notebook files.
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Regression/pdf/Regression-minted.pdf"
+     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Regression/pdf/Regression-minted.pdf"
  * HTML:
-   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Regression/html/Regression.html"
-   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Regression/html/Regression-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Regression/html/Regression-bs.html"
+   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Regression/html/Regression.html"
+   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Regression/html/Regression-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Regression/html/Regression-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Regression/ipynb/Regression.ipynb"
+   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Regression/ipynb/Regression.ipynb"
 
 
 ===== Gradient methods =====
@@ -112,13 +112,13 @@ formulas in HTML or ipython notebook files.
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Splines/pdf/Splines-minted.pdf"
+     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Splines/pdf/Splines-minted.pdf"
  * HTML:
-   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Splines/html/Splines.html"
-   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Splines/html/Splines-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Splines/html/Splines-bs.html"
+   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Splines/html/Splines.html"
+   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Splines/html/Splines-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Splines/html/Splines-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/Splines/ipynb/Splines.ipynb"
+   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Splines/ipynb/Splines.ipynb"
 
 
 ===== Logistic Regression =====
@@ -127,13 +127,13 @@ formulas in HTML or ipython notebook files.
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/LogReg/pdf/LogReg-minted.pdf"
+     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/LogReg/pdf/LogReg-minted.pdf"
  * HTML:
-   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/LogReg/html/LogReg.html"
-   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/LogReg/html/LogReg-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/LogReg/html/LogReg-bs.html"
+   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/LogReg/html/LogReg.html"
+   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/LogReg/html/LogReg-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/LogReg/html/LogReg-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/LogReg/ipynb/LogReg.ipynb"
+   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/LogReg/ipynb/LogReg.ipynb"
 
 
 ===== Neural Networks =====
@@ -142,13 +142,13 @@ formulas in HTML or ipython notebook files.
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/NeuralNet/pdf/NeuralNet-minted.pdf"
+     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/NeuralNet/pdf/NeuralNet-minted.pdf"
  * HTML:
-   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/NeuralNet/html/NeuralNet.html"
-   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/NeuralNet/html/NeuralNet-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/NeuralNet/html/NeuralNet-bs.html"
+   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/NeuralNet/html/NeuralNet.html"
+   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/NeuralNet/html/NeuralNet-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/NeuralNet/html/NeuralNet-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/NeuralNet/ipynb/NeuralNet.ipynb"
+   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/NeuralNet/ipynb/NeuralNet.ipynb"
 
 
 ===== Reduction of dimensionality =====
@@ -157,13 +157,13 @@ formulas in HTML or ipython notebook files.
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/DimRed/pdf/DimRed-minted.pdf"
+     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/DimRed/pdf/DimRed-minted.pdf"
  * HTML:
-   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/DimRed/html/DimRed.html"
-   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/DimRed/html/DimRed-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/DimRed/html/DimRed-bs.html"
+   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/DimRed/html/DimRed.html"
+   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/DimRed/html/DimRed-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/DimRed/html/DimRed-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/DimRed/ipynb/DimRed.ipynb"
+   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/DimRed/ipynb/DimRed.ipynb"
 
 
 ===== Decision trees, from simple to random ones =====
@@ -172,13 +172,13 @@ formulas in HTML or ipython notebook files.
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/DecisionTrees/pdf/DecisionTrees-minted.pdf"
+     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/DecisionTrees/pdf/DecisionTrees-minted.pdf"
  * HTML:
-   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/DecisionTrees/html/DecisionTrees.html"
-   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/DecisionTrees/html/DecisionTrees-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/DecisionTrees/html/DecisionTrees-bs.html"
+   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/DecisionTrees/html/DecisionTrees.html"
+   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/DecisionTrees/html/DecisionTrees-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/DecisionTrees/html/DecisionTrees-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/DecisionTrees/ipynb/DecisionTrees.ipynb"
+   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/DecisionTrees/ipynb/DecisionTrees.ipynb"
 
 
 ===== Support Vector Machines =====
@@ -187,13 +187,13 @@ formulas in HTML or ipython notebook files.
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/svm/pdf/svm-minted.pdf"
+     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/svm/pdf/svm-minted.pdf"
  * HTML:
-   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/svm/html/svm.html"
-   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/svm/html/svm-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/svm/html/svm-bs.html"
+   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/svm/html/svm.html"
+   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/svm/html/svm-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/svm/html/svm-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub/svm/ipynb/svm.ipynb"
+   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/svm/ipynb/svm.ipynb"
 
 
 

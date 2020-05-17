@@ -5,22 +5,27 @@ Here you will find a general overview of the course, with teaching schedule and 
 
 ## Lectures
 
-We plan to have lectures MTWTF (all days) from 10am to 12pm, with breaks and question sessions, and possible exercise and further question and answer sessions 2pm-3pm
+We plan to have lectures MTWTF (all days) from 10am to 12pm, with breaks and question sessions, and possible exercise and further question and answer sessions 2pm-3pm. For those of you not too familiar with Python as programming language, we may decide upon more dedicated sessions. During the lectures we will use a mix of whiteboard writing (like a traditional blackboard lecture) and the jupyter-notebooks which you find by scrolling down the presentation link at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/web/course.html.
+
+The lectures will be recorded and the videos will be made available right afterwards, together with the hand-written notes.
+These will be added as links below here. 
+
+We will assume you have some basic knowledge of linear algebra as well, and some elementary concepts from statistics like mean values, variance, covariance and some basic distributions like the Uniform distribution, Gaussian and Exponential distributions. There is some material on this at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Statistics/html/Statistics.html and https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Linalg/html/Linalg.html
 
 
 ##  Teaching schedule with links to material (This will be updated by May 17, stay tuned)
 
 ###  May 18-22, 2020
-- Monday: Introduction to Machine Learning, with an emphasis on Linear Regression, see https://compphysics.github.io/MLErasmus/doc/pub/How2ReadData/html/How2ReadData-bs.html
-- Tuesday: Discussion of linear regression examples, hands-on exercises
-- Wednesday: Logistic regression and classification problems, introducing gradient descent
-- Thursday: More on optimization and gradient descent
-- Friday: Decision trees, Random forests, bagging and boosting
+- Monday: Introduction to Machine Learning, with an emphasis on Linear Regression, see the introductory slides at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/How2ReadData/html/How2ReadData-bs.html and the regression slides at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Regression/html/Regression.html
+- Tuesday: Discussion of linear regression examples, hands-on exercises. The material is covered by the slides at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Regression/html/Regression.html
+- Wednesday: Logistic regression and classification problems, introducing gradient descent. See slides at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/LogReg/html/LogReg.html and https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Splines/html/Splines.html
+- Thursday: More on optimization and gradient descent. Slides at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Splines/html/Splines.html
+- Friday: Decision trees, Random forests, bagging and boosting, material at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/DecisionTrees/html/DecisionTrees.html
 
 ###  May 25-29, 2020
-- Monday:  Neural networks, basics
-- Tuesday: Neural networks, essential elements and making your own code
-- Wednesday: More Neural networks and deep learning
+- Monday:  Neural networks, basics, see material at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/NeuralNet/html/NeuralNet.html
+- Tuesday: Neural networks, essential elements and making your own code. See slides at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/NeuralNet/html/NeuralNet.html
+- Wednesday: More Neural networks and deep learning. Slides at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/NeuralNet/html/NeuralNet.html
 - Thursday: Discussion of experimental projects
 - Friday: Discussion of experimental projects
 

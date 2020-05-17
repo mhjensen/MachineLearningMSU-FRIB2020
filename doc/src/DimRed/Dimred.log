@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  23 JAN 2020 21:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  17 MAY 2020 22:20
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**Dimred
-(./Dimred.tex
+**DimRed
+(./DimRed.tex
 LaTeX2e <2015/01/01>
 Babel <3.9l> and hyphenation patterns for 79 languages loaded.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
@@ -311,11 +311,11 @@ Package pdftexcmds Info: \pdfdraftmode found.
 (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/catchfile.sty
 Package: catchfile 2011/03/01 v1.6 Catch the contents of a file (HO)
 )
-runsystem(uname -s > "Dimred.w18")...executed.
+runsystem(uname -s > "DimRed.w18")...executed.
 
 
-(./Dimred.w18)
-runsystem(rm -- "Dimred.w18")...executed.
+(./DimRed.w18)
+runsystem(rm -- "DimRed.w18")...executed.
 
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/etoolbox/etoolbox.sty
@@ -363,14 +363,14 @@ LaTeX Info: Redefining \\ on input line 3056.
 \@float@every@listing=\toks28
 \c@listing=\count128
 )
-runsystem(mkdir -p "_minted-Dimred")...executed.
+runsystem(mkdir -p "_minted-DimRed")...executed.
 
-runsystem(which "pygmentize" && touch "Dimred.aex")...executed.
+runsystem(which "pygmentize" && touch "DimRed.aex")...executed.
 
-runsystem(rm "Dimred.aex")...executed.
+runsystem(rm "DimRed.aex")...executed.
 
 
-(./_minted-Dimred/default.pygstyle)
+(./_minted-DimRed/default.pygstyle)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
@@ -1066,10 +1066,10 @@ File: md-frame-1.mdf 2013/07/01\ 1.9b: md-frame-1
 Package zref Info: New property: mdf@pagevalue on input line 895.
 )
 \@indexfile=\write7
-\openout7 = `Dimred.idx'.
+\openout7 = `DimRed.idx'.
 
 
-Writing index file Dimred.idx
+Writing index file DimRed.idx
 (/usr/local/texlive/2015/texmf-dist/tex/latex/idxlayout/idxlayout.sty
 Package: idxlayout 2012/03/30 v0.4d Configurable index layout
 
@@ -1155,8 +1155,8 @@ Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 \RaggedLeftParindent=\skip157
 \RaggedRightParindent=\skip158
 \JustifyingParindent=\skip159
-) (./Dimred.aux)
-\openout1 = `Dimred.aux'.
+) (./DimRed.aux)
+\openout1 = `DimRed.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 98.
 LaTeX Font Info:    ... okay on input line 98.
@@ -1238,9 +1238,9 @@ LaTeX Info: Redefining \ref on input line 98.
 LaTeX Info: Redefining \pageref on input line 98.
 LaTeX Info: Redefining \nameref on input line 98.
 
-(./Dimred.out) (./Dimred.out)
+(./DimRed.out) (./DimRed.out)
 \@outlinefile=\write8
-\openout8 = `Dimred.out'.
+\openout8 = `DimRed.out'.
 
  ABD: EveryShipout initializing macros
 ABD: EverySelectfont initializing macros
@@ -1309,12 +1309,12 @@ LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <8> not available
 (/usr/local/texlive/2015/texmf-dist/tex/latex/ucs/data/uni-32.def
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
 )
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/DABDAC3BDD309FACA0465576D8527CDB1F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/DABDAC3BDD309FACA0465576D8527CDB54E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 
@@ -1330,12 +1330,12 @@ l.321 \end{minted}
                   
 ? s
 OK, entering \scrollmode...
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/7B96FF376EF20AB03380B743CE8FFBBB1F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/7B96FF376EF20AB03380B743CE8FFBBB54E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 ! Package minted Error: Missing Pygments output; \inputminted was
@@ -1352,12 +1352,12 @@ This could be caused by using -output-directory or -aux-directory
 without setting minted's outputdir, or by using a build tool that 
 changes paths in ways minted cannot detect.
 
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/E9135B4FE1EB71154D3FA9AFFB60D8C31F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/E9135B4FE1EB71154D3FA9AFFB60D8C354E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 ! Package minted Error: Missing Pygments output; \inputminted was
@@ -1374,12 +1374,12 @@ This could be caused by using -output-directory or -aux-directory
 without setting minted's outputdir, or by using a build tool that 
 changes paths in ways minted cannot detect.
 
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/6760F5424C3BD20DC5B31D61E791EBFB1F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/6760F5424C3BD20DC5B31D61E791EBFB54E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 ! Package minted Error: Missing Pygments output; \inputminted was
@@ -1396,12 +1396,12 @@ This could be caused by using -output-directory or -aux-directory
 without setting minted's outputdir, or by using a build tool that 
 changes paths in ways minted cannot detect.
 
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/5D5AF920E8627619BF5A6E11B8F43A181F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/5D5AF920E8627619BF5A6E11B8F43A1854E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 ! Package minted Error: Missing Pygments output; \inputminted was
@@ -1418,12 +1418,12 @@ This could be caused by using -output-directory or -aux-directory
 without setting minted's outputdir, or by using a build tool that 
 changes paths in ways minted cannot detect.
 
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/414472C85BBFCA3FD0275B846A878ACD1F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/414472C85BBFCA3FD0275B846A878ACD54E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 ! Package minted Error: Missing Pygments output; \inputminted was
@@ -1456,12 +1456,12 @@ L/lmm/m/it/10 ;
  []
 
 [4]
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/253342A5300C3B44EE8807C81FB2F8DC1F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/253342A5300C3B44EE8807C81FB2F8DC54E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 
@@ -1479,12 +1479,12 @@ This could be caused by using -output-directory or -aux-directory
 without setting minted's outputdir, or by using a build tool that 
 changes paths in ways minted cannot detect.
 
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/D1E4CA93328B9B51C3DD192D4CC2DCF11F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/D1E4CA93328B9B51C3DD192D4CC2DCF154E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 ! Package minted Error: Missing Pygments output; \inputminted was
@@ -1501,12 +1501,12 @@ This could be caused by using -output-directory or -aux-directory
 without setting minted's outputdir, or by using a build tool that 
 changes paths in ways minted cannot detect.
 
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/346185BE3EF77C9F9E9778F775CCEBCC1F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/346185BE3EF77C9F9E9778F775CCEBCC54E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 ! Package minted Error: Missing Pygments output; \inputminted was
@@ -1524,12 +1524,12 @@ without setting minted's outputdir, or by using a build tool that
 changes paths in ways minted cannot detect.
 
 [5]
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/DFDAFF001CC47EDD031C2BF343557A2E1F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/DFDAFF001CC47EDD031C2BF343557A2E54E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 
@@ -1548,12 +1548,12 @@ without setting minted's outputdir, or by using a build tool that
 changes paths in ways minted cannot detect.
 
 [6] [7]
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/F888B1EBE3561DE73579FA82DC053F5C1F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/F888B1EBE3561DE73579FA82DC053F5C54E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 
@@ -1571,12 +1571,12 @@ This could be caused by using -output-directory or -aux-directory
 without setting minted's outputdir, or by using a build tool that 
 changes paths in ways minted cannot detect.
 
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/A7D8526F3F11F713CC1F162FE8741C731F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/A7D8526F3F11F713CC1F162FE8741C7354E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 ! Package minted Error: Missing Pygments output; \inputminted was
@@ -1594,12 +1594,12 @@ without setting minted's outputdir, or by using a build tool that
 changes paths in ways minted cannot detect.
 
 [8]
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/B3C82613110E4A251C35C91074EA209D1F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/B3C82613110E4A251C35C91074EA209D54E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 
@@ -1617,12 +1617,12 @@ This could be caused by using -output-directory or -aux-directory
 without setting minted's outputdir, or by using a build tool that 
 changes paths in ways minted cannot detect.
 
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/03353C30C02F913DDD6D4227335903271F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/03353C30C02F913DDD6D42273359032754E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 ! Package minted Error: Missing Pygments output; \inputminted was
@@ -1639,12 +1639,12 @@ This could be caused by using -output-directory or -aux-directory
 without setting minted's outputdir, or by using a build tool that 
 changes paths in ways minted cannot detect.
 
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/5B4879DD0BCA47D7AD77E18F335553871F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/5B4879DD0BCA47D7AD77E18F3355538754E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 ! Package minted Error: Missing Pygments output; \inputminted was
@@ -1662,12 +1662,12 @@ without setting minted's outputdir, or by using a build tool that
 changes paths in ways minted cannot detect.
 
 [9] [10] [11]
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/D65087BB7EA09F559AF699B9EE75ADD61F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/D65087BB7EA09F559AF699B9EE75ADD654E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 
@@ -1685,12 +1685,12 @@ This could be caused by using -output-directory or -aux-directory
 without setting minted's outputdir, or by using a build tool that 
 changes paths in ways minted cannot detect.
 
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/1F974AF9C50E5FA3298FEB7EFB9F3A6A1F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/1F974AF9C50E5FA3298FEB7EFB9F3A6A54E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 ! Package minted Error: Missing Pygments output; \inputminted was
@@ -1707,12 +1707,12 @@ This could be caused by using -output-directory or -aux-directory
 without setting minted's outputdir, or by using a build tool that 
 changes paths in ways minted cannot detect.
 
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/74847B1B4E6D85CADD72A6CCE9C6BB211F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/74847B1B4E6D85CADD72A6CCE9C6BB2154E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 ! Package minted Error: Missing Pygments output; \inputminted was
@@ -1729,12 +1729,12 @@ This could be caused by using -output-directory or -aux-directory
 without setting minted's outputdir, or by using a build tool that 
 changes paths in ways minted cannot detect.
 
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/85E01077874295723DF8E37C2080D9621F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/85E01077874295723DF8E37C2080D96254E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 ! Package minted Error: Missing Pygments output; \inputminted was
@@ -1752,12 +1752,12 @@ without setting minted's outputdir, or by using a build tool that
 changes paths in ways minted cannot detect.
 
 [12]
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/A20EC22562DB1B8286FC5A95CCEA00361F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/A20EC22562DB1B8286FC5A95CCEA003654E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 
@@ -1775,12 +1775,12 @@ This could be caused by using -output-directory or -aux-directory
 without setting minted's outputdir, or by using a build tool that 
 changes paths in ways minted cannot detect.
 
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/86758E322025D5881F6DCE4F1E6411DC1F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/86758E322025D5881F6DCE4F1E6411DC54E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 ! Package minted Error: Missing Pygments output; \inputminted was
@@ -1797,12 +1797,12 @@ This could be caused by using -output-directory or -aux-directory
 without setting minted's outputdir, or by using a build tool that 
 changes paths in ways minted cannot detect.
 
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/B72FA10D6A614A760D1E57221E56C1E71F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/B72FA10D6A614A760D1E57221E56C1E754E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 ! Package minted Error: Missing Pygments output; \inputminted was
@@ -1820,12 +1820,12 @@ without setting minted's outputdir, or by using a build tool that
 changes paths in ways minted cannot detect.
 
 [13]
-\openout3 = `Dimred.pyg'.
+\openout3 = `DimRed.pyg'.
 
 runsystem(pygmentize -l python -f latex -F tokenmerge -P style=default -P comma
 ndprefix=PYGdefault -P style=default -P commandprefix=PYGdefault -P mathescape=
-True -o "_minted-Dimred/6FEC8B6D9424F486C4C8617E4A759D7A1F461F17353731F953F9C1C
-938B03F93.pygtex" "Dimred.pyg" )...executed.
+True -o "_minted-DimRed/6FEC8B6D9424F486C4C8617E4A759D7A54E7F83514D8D29C7CF5013
+9E935ED8D.pygtex" "DimRed.pyg" )...executed.
 
 
 
@@ -1844,12 +1844,12 @@ without setting minted's outputdir, or by using a build tool that
 changes paths in ways minted cannot detect.
 
 [14]
-runsystem(rm "Dimred.pyg")...executed.
+runsystem(rm "DimRed.pyg")...executed.
 
  [15]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1362.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 1362.
- (./Dimred.aux)
+ (./DimRed.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1362.
 
 
@@ -1900,11 +1900,11 @@ ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-  Dimred.w18
+  DimRed.w18
 etoolbox.sty    2015/05/04 v2.2 e-TeX tools for LaTeX (JAW)
  xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-_minted-Dimred/default.pygstyle
+_minted-DimRed/default.pygstyle
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -1983,8 +1983,8 @@ epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
  ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
-  Dimred.out
-  Dimred.out
+  DimRed.out
+  DimRed.out
   ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
@@ -1999,7 +1999,7 @@ gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1362.
 
-Package rerunfilecheck Info: File `Dimred.out' has not changed.
+Package rerunfilecheck Info: File `DimRed.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
@@ -2028,7 +2028,7 @@ cal/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texliv
 e/2015/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2015/texm
 f-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2015/texmf-dist/font
 s/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Dimred.pdf (15 pages, 264574 bytes).
+Output written on DimRed.pdf (15 pages, 264577 bytes).
 PDF statistics:
  194 PDF objects out of 1000 (max. 8388607)
  160 compressed objects within 2 object streams

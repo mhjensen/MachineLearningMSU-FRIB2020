@@ -10,7 +10,7 @@ AUTHOR: "Morten Hjorth-Jensen":"http://mhjgit.github.io/info/doc/web/" at Depart
 
 
 <%
-pub_url = 'https://compphysics.github.io/MLErasmus/doc/pub'
+pub_url = 'https://mhjensen.github.io/MachineLearningMSU-FRIB2020//doc/pub'
 published = ['Introduction', 'How2ReadData', 'Linalg', 'Statistics',  'Regression', 'Splines', 'LogReg', 'NeuralNet', 'DimRed', 'DecisionTrees', 'svm',]
 chapters = {
  'Introduction': 'Introduction to Data Analysis and Machine Learning',

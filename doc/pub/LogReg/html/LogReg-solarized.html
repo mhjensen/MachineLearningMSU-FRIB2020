@@ -726,6 +726,7 @@ fig.tight_layout()
 plt.show()
 
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">seaborn</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">sns</span>
+sns.set(rc={<span style="color: #CD5555">&#39;figure.figsize&#39;</span>:(<span style="color: #B452CD">15.0</span>,<span style="color: #B452CD">15.0</span>)},font_scale=<span style="color: #B452CD">1</span>)
 correlation_matrix = cancerpd.corr().round(<span style="color: #B452CD">1</span>)
 <span style="color: #228B22"># use the heatmap function from seaborn to plot the correlation matrix</span>
 <span style="color: #228B22"># annot = True to print the values inside the square</span>
@@ -766,8 +767,7 @@ and then
 </pre></div>
 <p>
 Diagonalizing this matrix we can in turn say something about which
-features are of relevance and which are not. But before we proceed we
-need to define covariance and correlation matrices. This leads us to
+features are of relevance and which are not. This leads us to
 the classical Principal Component Analysis (PCA) theorem with
 applications.  This topic is covered in the PCA slides.
 

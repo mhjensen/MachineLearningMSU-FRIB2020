@@ -564,6 +564,7 @@ fig.tight_layout()
 plt.show()
 
 import seaborn as sns
+sns.set(rc={'figure.figsize':(15.0,15.0)},font_scale=1)
 correlation_matrix = cancerpd.corr().round(1)
 # use the heatmap function from seaborn to plot the correlation matrix
 # annot = True to print the values inside the square
@@ -597,8 +598,7 @@ correlation_matrix = cancerpd.corr().round(1)
 !ec
 
 Diagonalizing this matrix we can in turn say something about which
-features are of relevance and which are not. But before we proceed we
-need to define covariance and correlation matrices. This leads us to
+features are of relevance and which are not. This leads us to
 the classical Principal Component Analysis (PCA) theorem with
 applications.  This topic is covered in the PCA slides. 
 

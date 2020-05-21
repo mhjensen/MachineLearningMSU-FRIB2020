@@ -104,7 +104,7 @@ $n\times p$ design matrix and $\hat{\beta}$ represents our estimators/predictors
 The main problem with our function is that it takes values on the
 entire real axis. In the case of logistic regression, however, the
 labels $y_i$ are discrete variables. A typical example is the credit
-card data discussed below here, where we can set the state of
+card data discussed earlier, where we can set the state of
 defaulting the debt to $y_i=1$ and not to $y_i=0$ for one the persons
 in the data set (see the full example below).
 

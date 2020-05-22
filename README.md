@@ -22,7 +22,7 @@ Links to handwritten notes at https://github.com/mhjensen/MachineLearningMSU-FRI
 - Wednesday: Logistic regression and classification problems, introducing gradient descent. See slides at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/LogReg/html/LogReg.html and https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Splines/html/Splines.html. Links to handwritten notes at https://github.com/mhjensen/MachineLearningMSU-FRIB2020/blob/master/doc/HandWrittenNotes/NotesMay20.pdf and video at  https://mediaspace.msu.edu/media/t/1_shosk7c1
 - Thursday: More on optimization and gradient descent. Slides at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Splines/html/Splines.html.  Links to handwritten notes at https://github.com/mhjensen/MachineLearningMSU-FRIB2020/blob/master/doc/HandWrittenNotes/NotesMay21.pdf and video at 
 https://mediaspace.msu.edu/media/t/1_u69zibvz
-- Friday: Decision trees, Random forests, bagging and boosting, material at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/DecisionTrees/html/DecisionTrees.html
+- Friday: Decision trees, Random forests, bagging and boosting, material at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/DecisionTrees/html/DecisionTrees.html. Video at https://mediaspace.msu.edu/media/t/1_o6uox0ch
 
 ###  May 25-29, 2020
 - Monday:  Neural networks, basics, see material at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/NeuralNet/html/NeuralNet.html

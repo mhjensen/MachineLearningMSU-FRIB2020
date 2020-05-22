@@ -20,7 +20,8 @@ We will assume you have some basic knowledge of linear algebra as well, and some
 Links to handwritten notes at https://github.com/mhjensen/MachineLearningMSU-FRIB2020/blob/master/doc/HandWrittenNotes/NotesMay18.pdf and video at https://mediaspace.msu.edu/media/t/1_qz4id3p6
 - Tuesday: Discussion of linear regression examples, hands-on exercises. The material is covered by the slides at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Regression/html/Regression.html. Links to handwritten notes at https://github.com/mhjensen/MachineLearningMSU-FRIB2020/blob/master/doc/HandWrittenNotes/NotesMay19.pdf and video at  https://mediaspace.msu.edu/media/t/1_c06sswf0
 - Wednesday: Logistic regression and classification problems, introducing gradient descent. See slides at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/LogReg/html/LogReg.html and https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Splines/html/Splines.html. Links to handwritten notes at https://github.com/mhjensen/MachineLearningMSU-FRIB2020/blob/master/doc/HandWrittenNotes/NotesMay20.pdf and video at  https://mediaspace.msu.edu/media/t/1_shosk7c1
-- Thursday: More on optimization and gradient descent. Slides at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Splines/html/Splines.html
+- Thursday: More on optimization and gradient descent. Slides at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Splines/html/Splines.html.  Links to handwritten notes at https://github.com/mhjensen/MachineLearningMSU-FRIB2020/blob/master/doc/HandWrittenNotes/NotesMay21.pdf and video at 
+https://mediaspace.msu.edu/media/t/1_u69zibvz
 - Friday: Decision trees, Random forests, bagging and boosting, material at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/DecisionTrees/html/DecisionTrees.html
 
 ###  May 25-29, 2020

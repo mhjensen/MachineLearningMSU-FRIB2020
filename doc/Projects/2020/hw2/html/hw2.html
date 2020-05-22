@@ -46,7 +46,8 @@ div { text-align: justify; text-justify: inter-word; }
               ('Example of how to solve the previous exercise',
                2,
                None,
-               '___sec3')]}
+               '___sec3'),
+              ('And now with OLS only and Bootstrap', 2, None, '___sec4')]}
 end of tocinfo -->
 
 <body>
@@ -274,6 +275,70 @@ plt<span style="color: #666666">.</span>figure()
 plt<span style="color: #666666">.</span>plot(np<span style="color: #666666">.</span>log10(lambdas), estimated_mse_sklearn, label <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Ridge MSE&#39;</span>)
 plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&#39;log10(lambda)&#39;</span>)
 plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&#39;MSE&#39;</span>)
+plt<span style="color: #666666">.</span>legend()
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+
+<h2 id="___sec4">And now with OLS only and Bootstrap </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.model_selection</span> <span style="color: #008000; font-weight: bold">import</span> train_test_split
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.pipeline</span> <span style="color: #008000; font-weight: bold">import</span> make_pipeline
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.utils</span> <span style="color: #008000; font-weight: bold">import</span> resample
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.linear_model</span> <span style="color: #008000; font-weight: bold">import</span> Ridge
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.model_selection</span> <span style="color: #008000; font-weight: bold">import</span> cross_val_score
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.preprocessing</span> <span style="color: #008000; font-weight: bold">import</span> PolynomialFeatures
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.model_selection</span> <span style="color: #008000; font-weight: bold">import</span> KFold
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.metrics</span> <span style="color: #008000; font-weight: bold">import</span> mean_squared_error, r2_score, mean_absolute_error
+
+n <span style="color: #666666">=</span> <span style="color: #666666">100</span>
+n_boostraps <span style="color: #666666">=</span> <span style="color: #666666">100</span>
+maxdegree <span style="color: #666666">=</span> <span style="color: #666666">14</span>
+
+<span style="color: #408080; font-style: italic"># Make data set.</span>
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">-3</span>, <span style="color: #666666">3</span>, n)<span style="color: #666666">.</span>reshape(<span style="color: #666666">-1</span>, <span style="color: #666666">1</span>)
+y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x<span style="color: #666666">**2</span>) <span style="color: #666666">+</span> <span style="color: #666666">1.5</span> <span style="color: #666666">*</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>(x<span style="color: #666666">-2</span>)<span style="color: #666666">**2</span>)<span style="color: #666666">+</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>normal(<span style="color: #666666">0</span>, <span style="color: #666666">0.1</span>, x<span style="color: #666666">.</span>shape)
+error <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(maxdegree)
+bias <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(maxdegree)
+variance <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(maxdegree)
+polydegree <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(maxdegree)
+
+
+<span style="color: #408080; font-style: italic"># Make data set.</span>
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">-3</span>, <span style="color: #666666">3</span>, n)<span style="color: #666666">.</span>reshape(<span style="color: #666666">-1</span>, <span style="color: #666666">1</span>)
+y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x<span style="color: #666666">**2</span>) <span style="color: #666666">+</span> <span style="color: #666666">1.5</span> <span style="color: #666666">*</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>(x<span style="color: #666666">-2</span>)<span style="color: #666666">**2</span>)<span style="color: #666666">+</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>normal(<span style="color: #666666">0</span>, <span style="color: #666666">0.1</span>, x<span style="color: #666666">.</span>shape)
+X_train, X_test, y_train, y_test <span style="color: #666666">=</span> train_test_split(x, y, test_size<span style="color: #666666">=0.2</span>)
+
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.preprocessing</span> <span style="color: #008000; font-weight: bold">import</span> StandardScaler
+scaler <span style="color: #666666">=</span> StandardScaler()
+scaler<span style="color: #666666">.</span>fit(X_train)
+X_train_scaled <span style="color: #666666">=</span> scaler<span style="color: #666666">.</span>transform(X_train)
+X_test_scaled <span style="color: #666666">=</span> scaler<span style="color: #666666">.</span>transform(X_test)
+
+<span style="color: #008000; font-weight: bold">for</span> degree <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(maxdegree):
+    model <span style="color: #666666">=</span> make_pipeline(PolynomialFeatures(degree<span style="color: #666666">=</span>degree), LinearRegression(fit_intercept<span style="color: #666666">=</span><span style="color: #008000">False</span>))
+    y_pred <span style="color: #666666">=</span> np<span style="color: #666666">.</span>empty((y_test<span style="color: #666666">.</span>shape[<span style="color: #666666">0</span>], n_boostraps))
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n_boostraps):
+        x_, y_ <span style="color: #666666">=</span> resample(x_train_scaled, y_train)
+        y_pred[:, i] <span style="color: #666666">=</span> model<span style="color: #666666">.</span>fit(x_, y_)<span style="color: #666666">.</span>predict(x_test_scaled)<span style="color: #666666">.</span>ravel()
+
+    polydegree[degree] <span style="color: #666666">=</span> degree
+    error[degree] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>mean( np<span style="color: #666666">.</span>mean((y_test <span style="color: #666666">-</span> y_pred)<span style="color: #666666">**2</span>, axis<span style="color: #666666">=1</span>, keepdims<span style="color: #666666">=</span><span style="color: #008000">True</span>) )
+    bias[degree] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>mean( (y_test <span style="color: #666666">-</span> np<span style="color: #666666">.</span>mean(y_pred, axis<span style="color: #666666">=1</span>, keepdims<span style="color: #666666">=</span><span style="color: #008000">True</span>))<span style="color: #666666">**2</span> )
+    variance[degree] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>mean( np<span style="color: #666666">.</span>var(y_pred, axis<span style="color: #666666">=1</span>, keepdims<span style="color: #666666">=</span><span style="color: #008000">True</span>) )
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Polynomial degree:&#39;</span>, degree)
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Error:&#39;</span>, error[degree])
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Bias^2:&#39;</span>, bias[degree])
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Var:&#39;</span>, variance[degree])
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;{} &gt;= {} + {} = {}&#39;</span><span style="color: #666666">.</span>format(error[degree], bias[degree], variance[degree], bias[degree]<span style="color: #666666">+</span>variance[degree]))
+
+plt<span style="color: #666666">.</span>plot(polydegree, error, label<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Error&#39;</span>)
+plt<span style="color: #666666">.</span>plot(polydegree, bias, label<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bias&#39;</span>)
+plt<span style="color: #666666">.</span>plot(polydegree, variance, label<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Variance&#39;</span>)
 plt<span style="color: #666666">.</span>legend()
 plt<span style="color: #666666">.</span>show()
 </pre></div>

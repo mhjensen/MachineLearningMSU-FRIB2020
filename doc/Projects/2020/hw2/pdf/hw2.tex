@@ -101,7 +101,7 @@ Day 3: Homework 2
 
 % --- begin date ---
 \begin{center}
-May 19, 2020
+May 22, 2020
 \end{center}
 % --- end date ---
 
@@ -239,6 +239,54 @@ where $y$ is the function we want to fit with a given polynomial.
 \end{enumerate}
 
 \noindent
+\subsection*{Example of how to solve the previous exercise}
+
+\begin{print}
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.pipeline import make_pipeline
+from sklearn.utils import resample
+from sklearn.linear_model import Ridge
+from sklearn.model_selection import cross_val_score
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.model_selection import KFold
+from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
+
+n = 100
+# Make data set.
+x = np.linspace(-3, 3, n).reshape(-1, 1)
+y = np.exp(-x**2) + 1.5 * np.exp(-(x-2)**2)+ np.random.normal(0, 0.1, x.shape)
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+scaler.fit(X_train)
+X_train_scaled = scaler.transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+
+
+# Decide which values of lambda to use
+nlambdas = 500
+lambdas = np.logspace(-3, 5, nlambdas)
+
+
+estimated_mse_sklearn = np.zeros(nlambdas)
+i = 0
+for lmb in lambdas:
+    clf_ridge = Ridge(alpha=lmb).fit(X_train_scaled, y_train)
+    yridge = clf_ridge.predict(X_test_scaled)
+    estimated_mse_sklearn[i] = mean_squared_error(y_test, yridge)
+    i += 1
+plt.figure()
+plt.plot(np.log10(lambdas), estimated_mse_sklearn, label = 'Ridge MSE')
+plt.xlabel('log10(lambda)')
+plt.ylabel('MSE')
+plt.legend()
+plt.show()
+
+\end{print}
 
 % ------------------- end of main content ---------------
 

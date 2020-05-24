@@ -8,7 +8,7 @@ Here you will find a general overview of the course, with teaching schedule and 
 We plan to have lectures MTWTF (all days) from 10am to 12pm, with breaks and question sessions, and possible exercise and further question and answer sessions 2pm-3pm. For those of you not too familiar with Python as programming language, we may decide upon more dedicated sessions. During the lectures we will use a mix of whiteboard writing (like a traditional blackboard lecture) and the jupyter-notebooks which you find by scrolling down the presentation link at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/web/course.html.
 
 The lectures will be recorded and the videos will be made available right afterwards, together with the hand-written notes.
-These will be added as links below here. 
+These will be added as links below here. Solutions to exercises will also be added in due time.
 
 We will assume you have some basic knowledge of linear algebra as well, and some elementary concepts from statistics like mean values, variance, covariance and some basic distributions like the Uniform distribution, Gaussian and Exponential distributions. There is some material on this at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Statistics/html/Statistics.html and https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/Linalg/html/Linalg.html
 

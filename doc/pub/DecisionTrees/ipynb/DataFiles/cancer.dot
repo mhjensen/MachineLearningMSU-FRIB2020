@@ -10,7 +10,11 @@ edge [fontname=helvetica] ;
 2 -> 3 ;
 4 [label="gini = 0.0\nsamples = 239\nvalue = [[239, 0]\n[0, 239]]", fillcolor="#e58139"] ;
 3 -> 4 ;
+<<<<<<< HEAD
 5 [label="compactness error <= 0.014\ngini = 0.444\nsamples = 3\nvalue = [[2, 1]\n[1, 2]]", fillcolor="#fdf6f0"] ;
+=======
+5 [label="mean perimeter <= 78.51\ngini = 0.444\nsamples = 3\nvalue = [[2, 1]\n[1, 2]]", fillcolor="#e5813913"] ;
+>>>>>>> 1cec7587fa819aac109c52d92c370d3d5bcd5c05
 3 -> 5 ;
 6 [label="gini = 0.0\nsamples = 1\nvalue = [[0, 1]\n[1, 0]]", fillcolor="#e58139"] ;
 5 -> 6 ;
@@ -22,7 +26,11 @@ edge [fontname=helvetica] ;
 8 -> 9 ;
 10 [label="gini = 0.0\nsamples = 3\nvalue = [[0, 3]\n[3, 0]]", fillcolor="#e58139"] ;
 8 -> 10 ;
+<<<<<<< HEAD
 11 [label="worst texture <= 24.785\ngini = 0.278\nsamples = 6\nvalue = [[1, 5]\n[5, 1]]", fillcolor="#f4caac"] ;
+=======
+11 [label="area error <= 13.475\ngini = 0.278\nsamples = 6\nvalue = [[1, 5]\n[5, 1]]", fillcolor="#e581396b"] ;
+>>>>>>> 1cec7587fa819aac109c52d92c370d3d5bcd5c05
 1 -> 11 ;
 12 [label="gini = 0.0\nsamples = 1\nvalue = [[1, 0]\n[0, 1]]", fillcolor="#e58139"] ;
 11 -> 12 ;
@@ -30,11 +38,19 @@ edge [fontname=helvetica] ;
 11 -> 13 ;
 14 [label="worst texture <= 20.645\ngini = 0.202\nsamples = 167\nvalue = [[19, 148]\n[148, 19]]", fillcolor="#f0b68c"] ;
 0 -> 14 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+<<<<<<< HEAD
 15 [label="worst perimeter <= 116.8\ngini = 0.375\nsamples = 16\nvalue = [[12, 4]\n[4, 12]]", fillcolor="#f9e3d4"] ;
+=======
+15 [label="worst area <= 964.4\ngini = 0.375\nsamples = 16\nvalue = [[12, 4]\n[4, 12]]", fillcolor="#e5813938"] ;
+>>>>>>> 1cec7587fa819aac109c52d92c370d3d5bcd5c05
 14 -> 15 ;
 16 [label="gini = 0.0\nsamples = 11\nvalue = [[11, 0]\n[0, 11]]", fillcolor="#e58139"] ;
 15 -> 16 ;
+<<<<<<< HEAD
 17 [label="worst concavity <= 0.212\ngini = 0.32\nsamples = 5\nvalue = [[1, 4]\n[4, 1]]", fillcolor="#f6d5bd"] ;
+=======
+17 [label="mean fractal dimension <= 0.054\ngini = 0.32\nsamples = 5\nvalue = [[1, 4]\n[4, 1]]", fillcolor="#e5813955"] ;
+>>>>>>> 1cec7587fa819aac109c52d92c370d3d5bcd5c05
 15 -> 17 ;
 18 [label="gini = 0.0\nsamples = 1\nvalue = [[1, 0]\n[0, 1]]", fillcolor="#e58139"] ;
 17 -> 18 ;
@@ -42,13 +58,21 @@ edge [fontname=helvetica] ;
 17 -> 19 ;
 20 [label="mean concave points <= 0.049\ngini = 0.088\nsamples = 151\nvalue = [[7, 144]\n[144, 7]]", fillcolor="#ea985d"] ;
 14 -> 20 ;
+<<<<<<< HEAD
 21 [label="compactness error <= 0.016\ngini = 0.48\nsamples = 15\nvalue = [[6, 9]\n[9, 6]]", fillcolor="#ffffff"] ;
+=======
+21 [label="compactness error <= 0.016\ngini = 0.48\nsamples = 15\nvalue = [[6, 9]\n[9, 6]]", fillcolor="#e5813900"] ;
+>>>>>>> 1cec7587fa819aac109c52d92c370d3d5bcd5c05
 20 -> 21 ;
 22 [label="gini = 0.0\nsamples = 9\nvalue = [[0, 9]\n[9, 0]]", fillcolor="#e58139"] ;
 21 -> 22 ;
 23 [label="gini = 0.0\nsamples = 6\nvalue = [[6, 0]\n[0, 6]]", fillcolor="#e58139"] ;
 21 -> 23 ;
+<<<<<<< HEAD
 24 [label="fractal dimension error <= 0.013\ngini = 0.015\nsamples = 136\nvalue = [[1, 135]\n[135, 1]]", fillcolor="#e6853f"] ;
+=======
+24 [label="mean smoothness <= 0.079\ngini = 0.015\nsamples = 136\nvalue = [[1, 135]\n[135, 1]]", fillcolor="#e58139f7"] ;
+>>>>>>> 1cec7587fa819aac109c52d92c370d3d5bcd5c05
 20 -> 24 ;
 25 [label="gini = 0.0\nsamples = 135\nvalue = [[0, 135]\n[135, 0]]", fillcolor="#e58139"] ;
 24 -> 25 ;

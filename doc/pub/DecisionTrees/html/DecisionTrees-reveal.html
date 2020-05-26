@@ -148,7 +148,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Physics and Astronomy and National Superconducting Cyclotron Laboratory, Michigan State University</b></center>
 <br>
 <p>&nbsp;<br>
-<center><h4>May 25, 2020</h4></center> <!-- date -->
+<center><h4>May 26, 2020</h4></center> <!-- date -->
 <br>
 <p>
 
@@ -1246,7 +1246,7 @@ simpleprediction = simpletree.predict(X_test_scaled)
     <span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&#39;Var:&#39;</span>, variance[degree])
     <span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&#39;{} &gt;= {} + {} = {}&#39;</span>.format(error[degree], bias[degree], variance[degree], bias[degree]+variance[degree]))
 
-mse_simpletree = np.mean( np.mean((y_test - simpleprediction)**<span style="color: #B452CD">2</span>)
+mse_simpletree = np.mean(np.mean((y_test - simpleprediction)**<span style="color: #B452CD">2</span>))
 plt.xlim(<span style="color: #B452CD">1</span>,maxdepth)
 plt.plot(polydegree, error, label=<span style="color: #CD5555">&#39;MSE simple tree&#39;</span>)
 plt.plot(polydegree, mse_simpletree, label=<span style="color: #CD5555">&#39;MSE for Bootstrap&#39;</span>)

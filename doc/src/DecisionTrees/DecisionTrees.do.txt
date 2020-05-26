@@ -951,9 +951,9 @@ for degree in range(1,maxdepth):
     print('{} >= {} + {} = {}'.format(error[degree], bias[degree], variance[degree], bias[degree]+variance[degree]))
 
 mse_simpletree = np.mean(np.mean((y_test - simpleprediction)**2))
+print(mse_simpletree)
 plt.xlim(1,maxdepth)
-plt.plot(polydegree, error, label='MSE simple tree')
-plt.plot(polydegree, mse_simpletree, label='MSE for Bootstrap')
+plt.plot(polydegree, error, label='MSE')
 plt.plot(polydegree, bias, label='bias')
 plt.plot(polydegree, variance, label='Variance')
 plt.legend()

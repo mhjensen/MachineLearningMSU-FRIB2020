@@ -1,169 +1,242 @@
-TITLE: First day: Homework 1
+TITLE: Second week
 AUTHOR: Data Analysis and Machine Learning
 DATE:Today
 
-===== Day one exercises =====
+
+===== Regression examples, from linear regression, via decision trees and various forests to neural networks  =====
+
+The main aim of this project is to study some specific 
+regression problems, starting with the regression algorithms studied
+in homework set 3 (exercise 2 in particular).
+We will include decision trees, random forests and eventually boosting
+methods  and neural network with _tensorflow_ (feel free however to write your own code). 
+
+The case we encounter here
+is  the so-called Ising model for  our training data and we will
+focus on supervised training. We will follow closely the recent
+article of "Mehta et al, arXiv
+1803.08823":"https://arxiv.org/abs/1803.08823". This article stands
+out as an excellent review on machine learning (ML) algorithms.
+The added benefit is that each figure and
+model presented in "this article is accompanied by its jupyter
+notebook":"https://physics.bu.edu/~pankajm/MLnotebooks.html". This
+means that we can start using these and compare with our own results.
+
+You can also look up the "Regression slides for a discussion of the Ising model":"https://compphysics.github.io/MachineLearningMSU-FRIB2020/doc/pub/Regression/html/Regression.html" (scroll down to the end).
+
+Alternatively, you can replace the Ising thorughout the exercises with the nuclear binding energies. The choice is yours. Or if you have other data sets suitable for regression, feel free to use those.
 
 
-=== Exercise 1  ===
+What follows here is however a discussion of the Ising model. The nuclear binding energies were discussed during the lectures.
 
-The first exercise here is of a mere technical art. We want you to have 
-* git as a version control software and to establish a user account on a provider like GitHub. Other providers like GitLab etc are equally fine. 
-* Install various Python packages
+With the abovementioned configurations we will determine, using first
+various regression methods, the value of the coupling constant for the
+energy of the one-dimensional Ising model.
+We will mainly use _scikit-learn_ or _tensorflow_ or other Python packages such as _keras_ or other.
 
-We will make extensive use of Python as programming language and its
-myriad of available libraries.  You will find
-IPython/Jupyter notebooks invaluable in your work.  You can run _R_
-codes in the Jupyter/IPython notebooks, with the immediate benefit of
-visualizing your data. You can also use compiled languages like C++,
-Rust, Fortran etc if you prefer. The focus in these lectures will be
-on Python.
+Feel free to use the notebooks to benchmark your code.  
 
-If you have Python installed (we recommend Python3) and you feel
-pretty familiar with installing different packages, we recommend that
-you install the following Python packages via _pip_ as 
 
-o pip install numpy scipy matplotlib ipython scikit-learn sympy pandas pillow 
+=== Part a): Producing the data for the one-dimensional Ising model ===
 
-For _Tensorflow_, we recommend following the instructions in the text of 
-"Aurelien Geron, Hands‑On Machine Learning with Scikit‑Learn and TensorFlow, O'Reilly":"http://shop.oreilly.com/product/0636920052289.do"
 
-We will come back to _tensorflow_ later. 
 
-For Python3, replace _pip_ with _pip3_.
+The model we will employ in our studies is the so-called "Ising
+model":"https://en.wikipedia.org/wiki/Ising_model".  Together with
+models like the "Potts
+model":"https://en.wikipedia.org/wiki/Potts_model" and similar
+so-called lattice models, the Ising model has been widely studied in
+mathematics (in statistics in particular), physics, "life
+science":"https://journals.aps.org/pre/abstract/10.1103/PhysRevE.93.062402",
+chemistry and even in the "social sciences in order to model social
+behavior":"https://www.springer.com/gp/book/9781461420316". It is a
+simple binary value system where the variables of the model (spins often in
+physics) can take two values only, for example $\pm 1$ or $0$ and $1$.
+The system exhibits a phase transition in two or higher dimensions and
+the first person to find the analytical expressions for various
+expectation values was the Norwegian chemist "Lars
+Onsager":"https://en.wikipedia.org/wiki/Lars_Onsager" (Nobel prize in
+chemistry) after a tour de force mathematics exercise.
 
-For OSX users we recommend, after having installed Xcode, to
-install _brew_. Brew allows for a seamless installation of additional
-software via for example 
+In our discussions here we will stay with a physicist's approach and
+call the variables for spin. You could replace this with any other
+type of binary variables, ranging from a two political parties to blue
+and red spheres.  In its simplest form we define the energy of the
+system as
 
-o brew install python3
+!bt
+\begin{equation*}
+  E=-J\sum_{<kl>}^{N}s_ks_l,
+\end{equation*}
+!et
+with  $s_k=\pm 1$, $N$ is the total number of spins,
+$J$ is a coupling constant expressing the strength of the interaction
+between neighboring spins.
 
-For Linux users, with its variety of distributions like for example the widely popular Ubuntu distribution,
-you can use _pip_ as well and simply install Python as 
+The symbol $<kl>$ indicates that we sum over nearest
+neighbors only.
+Notice that for $J>0$ it is energetically favorable for neighboring spins
+to be aligned. This feature leads to, at low enough temperatures,
+a cooperative phenomenon called spontaneous magnetization. That is,
+through interactions between nearest neighbors, a given magnetic
+moment can influence the alignment of spins  that are separated
+from the given spin by a macroscopic distance. These long range correlations
+between spins are associated with a long-range order in which
+the lattice has a net magnetization in the absence of a magnetic field.
 
-o sudo apt-get install python3  (or python for Python2.7)
 
-If you don't want to perform these operations separately and venture
-into the hassle of exploring how to set up dependencies and paths, we
-recommend two widely used distrubutions which set up all relevant
-dependencies for Python, namely 
 
-* "Anaconda":"https://docs.anaconda.com/", 
+We start by considering the one-dimensional Ising model with nearest neighbor interactions. This model does not exhibit any phase transition.
 
-which is an open source
-distribution of the Python and R programming languages for large-scale
-data processing, predictive analytics, and scientific computing, that
-aims to simplify package management and deployment. Package versions
-are managed by the package management system _conda_. 
+Consider the 1D Ising model with nearest-neighbor interactions 
 
-* "Enthought canopy":"https://www.enthought.com/product/canopy/" 
+!bt
+\begin{equation*}
+  E[\hat{s}]=-J\sum_{j=1}^{N}s_{j}s_{j+1},
+\end{equation*}
+!et
 
-is a Python
-distribution for scientific and analytic computing distribution and
-analysis environment, available for free and under a commercial
-license.
+on a chain of length $N$ with so-called periodic boundary conditions and $S_j=\pm 1$ Ising spin variables.
+In one dimension, this model has no phase transition at finite temperature.
 
-We recommend using _Anaconda_.
+In the Python code below we generate, with a coupling coefficient set to $J=1$, a large number of spin configurations say $10000$ as shown in the code below.
+It means that our data will be a set of $i=1\ldots n$ points of the form
+$\{(E[\boldsymbol{s}^i],\boldsymbol{s}^i)\}$.
+Our task is to find the value of $J$ from the data set using linear regression.
 
-=== Exercise 2  ===
+Here is the Python code you need to generate the training data, see
+also the "notebook of Mehta et
+al":"https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVI-linreg_ising.html".
 
-We will generate our own dataset for a function $y(x)$ where $x \in [0,1]$ and defined by random numbers computed with the uniform distribution. The function $y$ is a quadratic polynomial in $x$ with added stochastic noise according to the normal distribution $\cal {N}(0,1)$.
-The following simple Python instructions define our $x$ and $y$ values (with 100 data points).
 !bc pycod
-x = np.random.rand(100,1)
-y = 5*x*x+0.1*np.random.randn(100,1)
+import numpy as np
+import scipy.sparse as sp
+np.random.seed(12)
+
+import warnings
+#Comment this to turn on warnings
+warnings.filterwarnings('ignore')
+
+### define Ising model aprams
+# system size
+L=40
+
+# create 10000 random Ising states
+states=np.random.choice([-1, 1], size=(10000,L))
+
+def ising_energies(states,L):
+    """
+    This function calculates the energies of the states in the nn Ising Hamiltonian
+    """
+    J=np.zeros((L,L),)
+    for i in range(L):
+        J[i,(i+1)%L]-=1.0
+    # compute energies
+    E = np.einsum('...i,ij,...j->...',states,J,states)
+
+    return E
+# calculate Ising energies
+energies=ising_energies(states,L)
 !ec
 
-o Write your own code (following the examples under the "regression slides":"https://compphysics.github.io/MachineLearning/doc/pub/Regression/html/Regression-bs.html") for computing the parametrization of the data set fitting a second-order polynomial. 
-o Use thereafter _scikit-learn_ (see again the examples in the regression slides) and compare with your own code.   
-o Using scikit-learn, compute also the mean square error, a risk metric corresponding to the expected value of the squared (quadratic) error defined as
-!bt 
-\[ MSE(\hat{y},\hat{\tilde{y}}) = \frac{1}{n}
-\sum_{i=0}^{n-1}(y_i-\tilde{y}_i)^2, 
-\] 
-!et 
-and the $R^2$ score function.
-If $\tilde{\hat{y}}_i$ is the predicted value of the $i-th$ sample and $y_i$ is the corresponding true value, then the score $R^2$ is defined as
+We can now recast the problem as a linear regression model using our codes from homework set 3 (exercise 2 in particular).
+The way we are going to build our model mimicks the way we could think of finding say the gravitional constant for the graviational force between two planets.
+In the absence of any prior knowledge, one sensible choice is the all-to-all Ising model
+
 !bt
 \[
-R^2(\hat{y}, \tilde{\hat{y}}) = 1 - \frac{\sum_{i=0}^{n - 1} (y_i - \tilde{y}_i)^2}{\sum_{i=0}^{n - 1} (y_i - \bar{y})^2},
-\]
-!et
-where we have defined the mean value  of $\hat{y}$ as
-!bt
-\[
-\bar{y} =  \frac{1}{n} \sum_{i=0}^{n - 1} y_i.
-\]
-!et
-You can use the functionality included in scikit-learn. If you feel for it, you can use your own program and define functions which compute the above two functions. 
-Discuss the meaning of these results. Try also to vary the coefficient in front of the added stochastic noise term and discuss the quality of the fits.
-
-
-
-
-=== Exercise 3, mean values and variances in linear regression  ===
-
-
-This exercise deals with various mean values ad variances in  linear regression method (here it may be useful to look up chapter 3, equation (3.8) of "Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer":"https://www.springer.com/gp/book/9780387848570").
-
-The assumption we have made is 
-that there exists a function $f(\bm{x})$ and  a normal distributed error $\bm{\varepsilon}\sim \mathcal{N}(0, \sigma^2)$
-which describes our data
-!bt
-\[
-\bm{y} = f(\bm{x})+\bm{\varepsilon}
+E_\mathrm{model}[\boldsymbol{s}^i] = - \sum_{j=1}^N \sum_{k=1}^N J_{j,k}s_{j}^is_{k}^i.
 \]
 !et
 
-We then approximate this function with our model from the solution of the linear regression equations (ordinary least squares OLS), that is our
-function $f$ is approximated by $\bm{\tilde{y}}$ where we minimized  $(\bm{y}-\bm{\tilde{y}})^2$, with
+Here $i$ represents a particular spin configuration (one of the possible $n$ configurations we generated with the code above).
+
+This model is uniquely defined by the non-local coupling strengths $J_{jk}$ which we want to learn.
+The model is linear in $\mathbf{J}$ which makes it possible to use linear regression.
+
+To apply linear regression, we recast this model in the form
 !bt
 \[
-\bm{\tilde{y}} = \bm{X}\bm{\beta}.
+E_\mathrm{model}^i \equiv \mathbf{X}^i \cdot \mathbf{J},
 \]
 !et
-The matrix $\bm{X}$ is the so-called design matrix. 
+
+where the vectors $\mathbf{X}^i$ represent all two-body interactions
+$\{s_{j}^is_{k}^i \}_{j,k=1}^N$, and the index $i$ runs over the
+samples in the data set.  To make the analogy complete, we can also
+represent the dot product by a single index $p = \{j,k\}$,
+i.e. $\mathbf{X}^i \cdot \mathbf{J}=X^i_pJ_p$.  Note that the
+regression model does not include the minus sign, so we expect to
+learn negative $J$'s.
+
+=== Part b): Estimating the coupling constant of the one-dimensional Ising model using linear regression ===
+
+We start with the one-dimensional Ising model and use the data we have
+generated with $J=1$ in the previous point.
+
+_Use linear regression,
+Lasso and Ridge regression as done in homework 3_.
+Make an analysis of the guessed coupling constant as function of the hyperparameters $\lambda$. 
+You can compare your
+results with those of "Mehta
+et al.":"https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVI-linreg_ising.html".
+Make sure it is the 1D data which is used.
+
+Discuss the methods and how they perform in computing the coupling
+constant $J$ and include a bias-variance analysis using the bootstrap resampling method.
+Discuss also the mean squared error and
+the $R2$ score as measures to assess your model.
+
+Give a critical analysis of your results.
 
 
-Show that  the expectation value of $\bm{y}$ for a given element $i$ 
-!bt
-\begin{align*} 
-\mathbb{E}(y_i) & =\mathbf{X}_{i, \ast} \, \beta, 
-\end{align*} 
-!et
-and that
-its variance is 
-!bt
-\begin{align*} \mbox{Var}(y_i) & = \sigma^2.  
-\end{align*}
-!et
-Hence, $y_i \sim \mathcal{N}( \mathbf{X}_{i, \ast} \, \bm{\beta}, \sigma^2)$, that is $\bm{y}$ follows a normal distribution with 
-mean value $\bm{X}\bm{\beta}$ and variance $\sigma^2$.
+You can replace the Ising model data with the nuclear binding energy data.
 
 
-With the OLS expressions for the parameters $\bm{\beta}$ show that
-!bt
-\[
-\mathbb{E}(\bm{\beta}) = \bm{\beta}.
-\]
-!et
-This means that the estimator of the regression parameters is unbiased.
 
-Show finally that the variance of $\bm{\beta}$ is
-!bt
-\begin{eqnarray*}
-\mbox{Var}(\bm{\beta}) & = & \sigma^2 \, (\mathbf{X}^{T} \mathbf{X})^{-1}.
-\end{eqnarray*}
-!et
+=== Part c): Random forests and boosting  ===
 
-=== Exercise 4  ===
+Repeat the above analysis but using random forests and boosting (XGboost or normal gradient boosting). You can use the functions
+in _scikit-learn_ for random forests and gradient boosting. For _XGBoost_ you need to install it separately. You can still use other functionality in _scikit-Learn_. 
 
-Finally, try now to write your own code (you can use the example the nuclear masses in the lecture slides on Regression and Getting started, see URL:"https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression-bs.html" and URL:"https://compphysics.github.io/MLErasmus/doc/pub/How2ReadData/html/How2ReadData-bs.html") that reads in the nuclear masses and
-compute the proton separation energies, the two-neutron and two-proton separation energies and finally the shell gaps for selected nuclei.
+=== Part d): Regression analysis of the one-dimensional Ising model using neural networks  ===
 
-Finally, try to compute the $Q$-values for $\beta-$ decay for selected nuclei.
+Your aim now is to use either _scikit-learn_ or _tensorflow_ in order to set up a neural network to find the optimal weights and biases. 
 
-We will use this code later as a starting point for our discussions on linear regression. 
+Train your network and compare the results with those from your linear regression code and random forests/boosting methods. 
+
+You can test your results against a similar code using _scikit-learn_ or _tensorflow/keras_. 
+
+
+A useful reference on the back progagation algorithm is "Nielsen's book":"http://neuralnetworksanddeeplearning.com/". It is an excellent read.
+
+
+Finally, give a critical analysis of your results with pros and cons of the various methods. 
+
+
+
+
+===== Background literature =====
+
+o  The text of Michael Nielsen is highly recommended, see "Nielsen's book":"http://neuralnetworksanddeeplearning.com/". It is an excellent read.
+
+o  The textbook of "Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer":"https://www.springer.com/gp/book/9780387848570", chapters 3 and 7 are the most relevant ones for the analysis here. 
+
+o  "Mehta et al, arXiv 1803.08823":"https://arxiv.org/abs/1803.08823", *A high-bias, low-variance introduction to Machine Learning for physicists*, ArXiv:1803.08823.
+
+If you wish to read more about the Ising model and statistical physics here are three suggestions.
+
+o  "M. Plischke and B. Bergersen":"http://www.worldscientific.com/worldscibooks/10.1142/5660", *Equilibrium Statistical Physics*, World Scientific, see chapters 5 and 6.
+
+o  "D. P. Landau and K. Binder":"http://www.cambridge.org/no/academic/subjects/physics/computational-science-and-modelling/guide-monte-carlo-simulations-statistical-physics-4th-edition?format=HB", *A Guide to Monte Carlo Simulations in Statistical Physics*, Cambridge, see chapters 2,3 and 4.
+
+o  "M. E. J. Newman and T. Barkema":"https://global.oup.com/academic/product/monte-carlo-methods-in-statistical-physics-9780198517979?cc=no&lang=en&", *Monte Carlo Methods in Statistical Physics*, Oxford, see chapters 3 and 4.
+
+
+
+
+
+
 
 
 

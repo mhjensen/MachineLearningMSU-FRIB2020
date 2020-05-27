@@ -9,10 +9,10 @@ The main aim of this project is to study some specific
 regression problems, starting with the regression algorithms studied
 in homework set 3 (exercise 2 in particular).
 We will include decision trees, random forests and eventually boosting
-methods  and neural network with _tensorflow_ (feel free however to write your own code) for studying
-both regression and classification problems.
+methods  and neural network with _tensorflow_ (feel free however to write your own code). 
 
-We will first use the so-called Ising model for  our training data and will
+The case we encounter here
+is  the so-called Ising model for  our training data and we will
 focus on supervised training. We will follow closely the recent
 article of "Mehta et al, arXiv
 1803.08823":"https://arxiv.org/abs/1803.08823". This article stands
@@ -22,9 +22,12 @@ model presented in "this article is accompanied by its jupyter
 notebook":"https://physics.bu.edu/~pankajm/MLnotebooks.html". This
 means that we can start using these and compare with our own results.
 
-You can also look up the "Regression slides for a discussion of the Ising model":"https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression.html" (scroll down to the end).
+You can also look up the "Regression slides for a discussion of the Ising model":"https://compphysics.github.io/MachineLearningMSU-FRIB2020/doc/pub/Regression/html/Regression.html" (scroll down to the end).
+
+Alternatively, you can replace the Ising thorughout the exercises with the nuclear binding energies. The choice is yours. Or if you have other data sets suitable for regression, feel free to use those.
 
 
+What follows here is however a discussion of the Ising model. The nuclear binding energies were discussed during the lectures.
 
 With the abovementioned configurations we will determine, using first
 various regression methods, the value of the coupling constant for the
@@ -166,24 +169,49 @@ i.e. $\mathbf{X}^i \cdot \mathbf{J}=X^i_pJ_p$.  Note that the
 regression model does not include the minus sign, so we expect to
 learn negative $J$'s.
 
+=== Part b): Estimating the coupling constant of the one-dimensional Ising model using linear regression ===
+
+We start with the one-dimensional Ising model and use the data we have
+generated with $J=1$ in the previous point.
+
+_Use linear regression,
+Lasso and Ridge regression as done in homework 3_.
+Make an analysis of the guessed coupling constant as function of the hyperparameters $\lambda$. 
+You can compare your
+results with those of "Mehta
+et al.":"https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVI-linreg_ising.html".
+Make sure it is the 1D data which is used.
+
+Discuss the methods and how they perform in computing the coupling
+constant $J$ and include a bias-variance analysis using the bootstrap resampling method.
+Discuss also the mean squared error and
+the $R2$ score as measures to assess your model.
+
+Give a critical analysis of your results.
+
+
+You can replace the Ising model data with the nuclear binding energy data.
 
 
 
+=== Part c): Random forests and boosting  ===
+
+Repeat the above analysis but using random forests and boosting (XGboost or normal gradient boosting). You can use the functions
+in _scikit-learn_ for random forests and gradient boosting. For _XGBoost_ you need to install it separately. You can still use other functionality in _scikit-Learn_. 
 
 === Part d): Regression analysis of the one-dimensional Ising model using neural networks  ===
 
 Your aim now is to use either _scikit-learn_ or _tensorflow_ in order to set up a neural network to find the optimal weights and biases. 
 
-Train your network and compare the results with those from your linear regression code. 
+Train your network and compare the results with those from your linear regression code and random forests/boosting methods. 
+
 You can test your results against a similar code using _scikit-learn_ or _tensorflow/keras_. 
 
 
 A useful reference on the back progagation algorithm is "Nielsen's book":"http://neuralnetworksanddeeplearning.com/". It is an excellent read.
 
 
-=== Part f) Critical evaluation of the various algorithms ===
-
-After all these glorious calculations, you should now summarize the various algorithms and come with a critical evaluation of their pros and cons. Which algorithm works best for the regression case and which is best for the classification case. These codes will also be part of your final project 2, but now applied to other data sets.
+Finally, give a critical analysis of your results with pros and cons of the various methods. 
 
 
 
@@ -208,88 +236,7 @@ o  "M. E. J. Newman and T. Barkema":"https://global.oup.com/academic/product/mon
 
 
 
-===== Introduction to numerical projects =====
-
-Here follows a brief recipe and recommendation on how to write a report for each
-project.
-
-  * Give a short description of the nature of the problem and the eventual  numerical methods you have used.
-
-  * Describe the algorithm you have used and/or developed. Here you may find it convenient to use pseudocoding. In many cases you can describe the algorithm in the program itself.
-
-  * Include the source code of your program. Comment your program properly.
-
-  * If possible, try to find analytic solutions, or known limits in order to test your program when developing the code.
-
-  * Include your results either in figure form or in a table. Remember to        label your results. All tables and figures should have relevant captions        and labels on the axes.
-
-  * Try to evaluate the reliabilty and numerical stability/precision of your results. If possible, include a qualitative and/or quantitative discussion of the numerical stability, eventual loss of precision etc.
-
-  * Try to give an interpretation of you results in your answers to  the problems.
-
-  * Critique: if possible include your comments and reflections about the  exercise, whether you felt you learnt something, ideas for improvements and  other thoughts you've made when solving the exercise. We wish to keep this course at the interactive level and your comments can help us improve it.
-
-  * Try to establish a practice where you log your work at the  computerlab. You may find such a logbook very handy at later stages in your work, especially when you don't properly remember  what a previous test version  of your program did. Here you could also record  the time spent on solving the exercise, various algorithms you may have tested or other topics which you feel worthy of mentioning.
 
 
-
-
-
-===== Format for electronic delivery of report and programs =====
-
-The preferred format for the report is a PDF file. You can also use DOC or postscript formats or as an ipython notebook file.  As programming language we prefer that you choose between C/C++, Fortran2008 or Python. The following prescription should be followed when preparing the report:
-
-  * Send us _only_ the report file!  For the source code file(s) you have developed please provide us with your link to you\rr github domain.  The report file should include all of your discussions and a list of the codes you have developed.  
-
-  * item In your git repository, please include a folder which contains selected results and a folder with your codes.
-
-
-Finally, 
-we encourage you to collaborate. Optimal working groups consist of 
-2-3 students. You can then hand in a common report. 
-
-
-
-===== Software and needed installations =====
-
-If you have Python installed (we recommend Python3) and you feel pretty familiar with installing different packages, 
-we recommend that you install the following Python packages via _pip_ as
-o pip install numpy scipy matplotlib ipython scikit-learn tensorflow sympy pandas pillow
-For Python3, replace _pip_ with _pip3_.
-
-See below for a discussion of _tensorflow_ and _scikit-learn_. 
-
-For OSX users we recommend also, after having installed Xcode, to install _brew_. Brew allows 
-for a seamless installation of additional software via for example
-o brew install python3
-
-For Linux users, with its variety of distributions like for example the widely popular Ubuntu distribution
-you can use _pip_ as well and simply install Python as 
-o sudo apt-get install python3  (or python for python2.7)
-etc etc. 
-
-If you don't want to install various Python packages with their dependencies separately, we recommend two widely used distrubutions which set up  all relevant dependencies for Python, namely
-o "Anaconda":"https://docs.anaconda.com/" Anaconda is an open source distribution of the Python and R programming languages for large-scale data processing, predictive analytics, and scientific computing, that aims to simplify package management and deployment. Package versions are managed by the package management system _conda_
-o "Enthought canopy":"https://www.enthought.com/product/canopy/"  is a Python distribution for scientific and analytic computing distribution and analysis environment, available for free and under a commercial license.
-
-Popular software packages written in Python for ML are
-
-* "Scikit-learn":"http://scikit-learn.org/stable/", 
-* "Tensorflow":"https://www.tensorflow.org/",
-* "PyTorch":"http://pytorch.org/" and 
-* "Keras":"https://keras.io/".
-These are all freely available at their respective GitHub sites. They 
-encompass communities of developers in the thousands or more. And the number
-of code developers and contributors keeps increasing.
-
-
-
-
-
-
-
-
-
-  
 
 

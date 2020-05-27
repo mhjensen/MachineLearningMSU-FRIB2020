@@ -28,7 +28,7 @@ Solution to exercises for the first week will be available over the weekend.
 
 ###  May 25-29, 2020
 - Monday: Decision trees, Random forests, bagging and boosting, material at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/DecisionTrees/html/DecisionTrees.html. Links to handwritten notes at https://github.com/mhjensen/MachineLearningMSU-FRIB2020/blob/master/doc/HandWrittenNotes/NotesMay25.pdf and video at  https://mediaspace.msu.edu/media/t/1_a0wrdrbz
-- Tuesday:  Neural networks, basics, see material at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/NeuralNet/html/NeuralNet.html
+- Tuesday:  Neural networks, basics, see material at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/NeuralNet/html/NeuralNet.html. Links to handwritten notes at https://github.com/mhjensen/MachineLearningMSU-FRIB2020/blob/master/doc/HandWrittenNotes/NotesMay26.pdf and video at https://mediaspace.msu.edu/media/t/1_7nm3kegw
 - Wednesday: Neural networks, essential elements and making your own code. See slides at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/NeuralNet/html/NeuralNet.html
 - Thursday: More Neural networks and deep learning. Slides at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/NeuralNet/html/NeuralNet.html. Examples and discussion of experimental projects
 - Friday: Discussion of experimental projects

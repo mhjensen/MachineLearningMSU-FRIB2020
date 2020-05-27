@@ -221,11 +221,20 @@ formulas in HTML or ipython notebook files.
    * "Bootstrap  slide style, easy for reading on mobile devices": "http://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/Projects/2020/hw2/html/hw2-bs.html"
 
 
-=== Third  exercise set (Day 4 and 5)  ===
+=== Third  exercise set (Days 4 and 5)  ===
  * LaTeX and PDF:
      * "LaTex file":"http://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/Projects/2020/hw3/pdf/hw3.tex"
      * "PDF file":"http://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/Projects/2020/hw3/pdf/hw3.pdf"
  * HTML:
    * "Plain html":"http://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/Projects/2020/hw3/html/hw3.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "http://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/Projects/2020/hw3/html/hw3-bs.html"
+
+
+=== Fourth  exercise set (Days 7-9)  ===
+ * LaTeX and PDF:
+     * "LaTex file":"http://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/Projects/2020/hw4/pdf/hw4.tex"
+     * "PDF file":"http://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/Projects/2020/hw4/pdf/hw4.pdf"
+ * HTML:
+   * "Plain html":"http://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/Projects/2020/hw4/html/hw4.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "http://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/Projects/2020/hw4/html/hw4-bs.html"
 

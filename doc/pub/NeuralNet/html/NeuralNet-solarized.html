@@ -146,22 +146,23 @@ div { text-align: justify; text-justify: inter-word; }
               ('Using TensorFlow backend', 2, None, '___sec56'),
               ('Optimizing and using gradient descent', 2, None, '___sec57'),
               ('Using Keras', 2, None, '___sec58'),
-              ('Which activation function should I use?', 2, None, '___sec59'),
+              ('The Breast Cancer Data, now with Keras', 2, None, '___sec59'),
+              ('Which activation function should I use?', 2, None, '___sec60'),
               ('Is the Logistic activation function (Sigmoid)  our choice?',
                2,
                None,
-               '___sec60'),
-              ('The derivative of the Logistic funtion', 2, None, '___sec61'),
-              ('The RELU function family', 2, None, '___sec62'),
-              ('Which activation function should we use?', 2, None, '___sec63'),
+               '___sec61'),
+              ('The derivative of the Logistic funtion', 2, None, '___sec62'),
+              ('The RELU function family', 2, None, '___sec63'),
+              ('Which activation function should we use?', 2, None, '___sec64'),
               ('A top-down perspective on Neural networks',
                2,
                None,
-               '___sec64'),
+               '___sec65'),
               ('Limitations of supervised learning with deep networks',
                2,
                None,
-               '___sec65')]}
+               '___sec66')]}
 end of tocinfo -->
 
 <body>
@@ -203,7 +204,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Physics and Astronomy and National Superconducting Cyclotron Laboratory, Michigan State University</b></center>
 <br>
 <p>
-<center><h4>May 26, 2020</h4></center> <!-- date -->
+<center><h4>May 28, 2020</h4></center> <!-- date -->
 <br>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
@@ -2406,7 +2407,11 @@ X_train, X_test, Y_train, Y_test = train_test_split(inputs, labels, train_size=t
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">tensorflow</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">tf</span>
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #228B22">#import tensorflow as tf</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">tensorflow.compat.v1</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">tf</span>
+tf.disable_v2_behavior()
+tf.reset_default_graph()
+
 
 <span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">NeuralNetworkTensorflow</span>:
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(
@@ -2715,9 +2720,186 @@ ax.set_xlabel(<span style="color: #CD5555">&quot;$\lambda$&quot;</span>)
 plt.show()
 </pre></div>
 <p>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec59">The Breast Cancer Data, now with Keras </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">tensorflow.compat.v1</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">tf</span>
+tf.disable_v2_behavior()
+tf.reset_default_graph()
+
+
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">keras.models</span> <span style="color: #8B008B; font-weight: bold">import</span> Sequential      <span style="color: #228B22">#This allows appending layers to existing models</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">keras.layers</span> <span style="color: #8B008B; font-weight: bold">import</span> Dense           <span style="color: #228B22">#This allows defining the characteristics of a particular layer</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">keras</span> <span style="color: #8B008B; font-weight: bold">import</span> optimizers             <span style="color: #228B22">#This allows using whichever optimiser we want (sgd,adam,RMSprop)</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">keras</span> <span style="color: #8B008B; font-weight: bold">import</span> regularizers           <span style="color: #228B22">#This allows using whichever regularizer we want (l1,l2,l1_l2)</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">keras.utils</span> <span style="color: #8B008B; font-weight: bold">import</span> to_categorical   <span style="color: #228B22">#This allows using categorical cross entropy as the cost function</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">seaborn</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">sns</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> train_test_split <span style="color: #8B008B; font-weight: bold">as</span> splitter
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.datasets</span> <span style="color: #8B008B; font-weight: bold">import</span> load_breast_cancer
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">pickle</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span> 
+
+
+<span style="color: #CD5555">&quot;&quot;&quot;Load breast cancer dataset&quot;&quot;&quot;</span>
+
+np.random.seed(<span style="color: #B452CD">0</span>)        <span style="color: #228B22">#create same seed for random number every time</span>
+
+cancer=load_breast_cancer()      <span style="color: #228B22">#Download breast cancer dataset</span>
+
+inputs=cancer.data                     <span style="color: #228B22">#Feature matrix of 569 rows (samples) and 30 columns (parameters)</span>
+outputs=cancer.target                  <span style="color: #228B22">#Label array of 569 rows (0 for benign and 1 for malignant)</span>
+labels=cancer.feature_names[<span style="color: #B452CD">0</span>:<span style="color: #B452CD">30</span>]
+
+<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&#39;The content of the breast cancer dataset is:&#39;</span>)      <span style="color: #228B22">#Print information about the datasets</span>
+<span style="color: #8B008B; font-weight: bold">print</span>(labels)
+<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&#39;-------------------------&#39;</span>)
+<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&quot;inputs =  &quot;</span> + <span style="color: #658b00">str</span>(inputs.shape))
+<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&quot;outputs =  &quot;</span> + <span style="color: #658b00">str</span>(outputs.shape))
+<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&quot;labels =  &quot;</span>+ <span style="color: #658b00">str</span>(labels.shape))
+
+x=inputs      <span style="color: #228B22">#Reassign the Feature and Label matrices to other variables</span>
+y=outputs
+
+<span style="color: #228B22">#%% </span>
+
+<span style="color: #228B22"># Visualisation of dataset (for correlation analysis)</span>
+
+plt.figure()
+plt.scatter(x[:,<span style="color: #B452CD">0</span>],x[:,<span style="color: #B452CD">2</span>],s=<span style="color: #B452CD">40</span>,c=y,cmap=plt.cm.Spectral)
+plt.xlabel(<span style="color: #CD5555">&#39;Mean radius&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.ylabel(<span style="color: #CD5555">&#39;Mean perimeter&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.show()
+
+plt.figure()
+plt.scatter(x[:,<span style="color: #B452CD">5</span>],x[:,<span style="color: #B452CD">6</span>],s=<span style="color: #B452CD">40</span>,c=y, cmap=plt.cm.Spectral)
+plt.xlabel(<span style="color: #CD5555">&#39;Mean compactness&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.ylabel(<span style="color: #CD5555">&#39;Mean concavity&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.show()
+
+
+plt.figure()
+plt.scatter(x[:,<span style="color: #B452CD">0</span>],x[:,<span style="color: #B452CD">1</span>],s=<span style="color: #B452CD">40</span>,c=y,cmap=plt.cm.Spectral)
+plt.xlabel(<span style="color: #CD5555">&#39;Mean radius&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.ylabel(<span style="color: #CD5555">&#39;Mean texture&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.show()
+
+plt.figure()
+plt.scatter(x[:,<span style="color: #B452CD">2</span>],x[:,<span style="color: #B452CD">1</span>],s=<span style="color: #B452CD">40</span>,c=y,cmap=plt.cm.Spectral)
+plt.xlabel(<span style="color: #CD5555">&#39;Mean perimeter&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.ylabel(<span style="color: #CD5555">&#39;Mean compactness&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.show()
+
+
+<span style="color: #228B22"># Generate training and testing datasets</span>
+
+<span style="color: #228B22">#Select features relevant to classification (texture,perimeter,compactness and symmetery) </span>
+<span style="color: #228B22">#and add to input matrix</span>
+
+temp1=np.reshape(x[:,<span style="color: #B452CD">1</span>],(<span style="color: #658b00">len</span>(x[:,<span style="color: #B452CD">1</span>]),<span style="color: #B452CD">1</span>))
+temp2=np.reshape(x[:,<span style="color: #B452CD">2</span>],(<span style="color: #658b00">len</span>(x[:,<span style="color: #B452CD">2</span>]),<span style="color: #B452CD">1</span>))
+X=np.hstack((temp1,temp2))      
+temp=np.reshape(x[:,<span style="color: #B452CD">5</span>],(<span style="color: #658b00">len</span>(x[:,<span style="color: #B452CD">5</span>]),<span style="color: #B452CD">1</span>))
+X=np.hstack((X,temp))       
+temp=np.reshape(x[:,<span style="color: #B452CD">8</span>],(<span style="color: #658b00">len</span>(x[:,<span style="color: #B452CD">8</span>]),<span style="color: #B452CD">1</span>))
+X=np.hstack((X,temp))       
+
+X_train,X_test,y_train,y_test=splitter(X,y,test_size=<span style="color: #B452CD">0.1</span>)   <span style="color: #228B22">#Split datasets into training and testing</span>
+
+y_train=to_categorical(y_train)     <span style="color: #228B22">#Convert labels to categorical when using categorical cross entropy</span>
+y_test=to_categorical(y_test)
+
+<span style="color: #8B008B; font-weight: bold">del</span> temp1,temp2,temp
+
+<span style="color: #228B22"># %%</span>
+
+<span style="color: #228B22"># Define tunable parameters&quot;</span>
+
+eta=np.logspace(-<span style="color: #B452CD">3</span>,-<span style="color: #B452CD">1</span>,<span style="color: #B452CD">3</span>)                    <span style="color: #228B22">#Define vector of learning rates (parameter to SGD optimiser)</span>
+lamda=<span style="color: #B452CD">0.01</span>                                  <span style="color: #228B22">#Define hyperparameter</span>
+n_layers=<span style="color: #B452CD">2</span>                                  <span style="color: #228B22">#Define number of hidden layers in the model</span>
+n_neuron=np.logspace(<span style="color: #B452CD">0</span>,<span style="color: #B452CD">3</span>,<span style="color: #B452CD">4</span>,dtype=<span style="color: #658b00">int</span>)       <span style="color: #228B22">#Define number of neurons per layer</span>
+epochs=<span style="color: #B452CD">100</span>                                   <span style="color: #228B22">#Number of reiterations over the input data</span>
+batch_size=<span style="color: #B452CD">100</span>                              <span style="color: #228B22">#Number of samples per gradient update</span>
+
+<span style="color: #228B22"># %%</span>
+
+<span style="color: #CD5555">&quot;&quot;&quot;Define function to return Deep Neural Network model&quot;&quot;&quot;</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">NN_model</span>(inputsize,n_layers,n_neuron,eta,lamda):
+    model=Sequential()      
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(n_layers):       <span style="color: #228B22">#Run loop to add hidden layers to the model</span>
+        <span style="color: #8B008B; font-weight: bold">if</span> (i==<span style="color: #B452CD">0</span>):                  <span style="color: #228B22">#First layer requires input dimensions</span>
+            model.add(Dense(n_neuron,activation=<span style="color: #CD5555">&#39;relu&#39;</span>,kernel_regularizer=regularizers.l2(lamda),input_dim=inputsize))
+        <span style="color: #8B008B; font-weight: bold">else</span>:                       <span style="color: #228B22">#Subsequent layers are capable of automatic shape inferencing</span>
+            model.add(Dense(n_neuron,activation=<span style="color: #CD5555">&#39;relu&#39;</span>,kernel_regularizer=regularizers.l2(lamda)))
+    model.add(Dense(<span style="color: #B452CD">2</span>,activation=<span style="color: #CD5555">&#39;softmax&#39;</span>))  <span style="color: #228B22">#2 outputs - ordered and disordered (softmax for prob)</span>
+    sgd=optimizers.SGD(lr=eta)
+    model.compile(loss=<span style="color: #CD5555">&#39;categorical_crossentropy&#39;</span>,optimizer=sgd,metrics=[<span style="color: #CD5555">&#39;accuracy&#39;</span>])
+    <span style="color: #8B008B; font-weight: bold">return</span> model
+
+    
+Train_accuracy=np.zeros((<span style="color: #658b00">len</span>(n_neuron),<span style="color: #658b00">len</span>(eta)))      <span style="color: #228B22">#Define matrices to store accuracy scores as a function</span>
+Test_accuracy=np.zeros((<span style="color: #658b00">len</span>(n_neuron),<span style="color: #658b00">len</span>(eta)))       <span style="color: #228B22">#of learning rate and number of hidden neurons for </span>
+
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(n_neuron)):     <span style="color: #228B22">#run loops over hidden neurons and learning rates to calculate </span>
+    <span style="color: #8B008B; font-weight: bold">for</span> j <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(eta)):      <span style="color: #228B22">#accuracy scores </span>
+        DNN_model=NN_model(X_train.shape[<span style="color: #B452CD">1</span>],n_layers,n_neuron[i],eta[j],lamda)
+        DNN_model.fit(X_train,y_train,epochs=epochs,batch_size=batch_size,verbose=<span style="color: #B452CD">1</span>)
+        Train_accuracy[i,j]=DNN_model.evaluate(X_train,y_train)[<span style="color: #B452CD">1</span>]
+        Test_accuracy[i,j]=DNN_model.evaluate(X_test,y_test)[<span style="color: #B452CD">1</span>]
+               
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">plot_data</span>(x,y,data,title=<span style="color: #658b00">None</span>):
+
+    <span style="color: #228B22"># plot results</span>
+    fontsize=<span style="color: #B452CD">16</span>
+
+
+    fig = plt.figure()
+    ax = fig.add_subplot(<span style="color: #B452CD">111</span>)
+    cax = ax.matshow(data, interpolation=<span style="color: #CD5555">&#39;nearest&#39;</span>, vmin=<span style="color: #B452CD">0</span>, vmax=<span style="color: #B452CD">1</span>)
+    
+    cbar=fig.colorbar(cax)
+    cbar.ax.set_ylabel(<span style="color: #CD5555">&#39;accuracy (%)&#39;</span>,rotation=<span style="color: #B452CD">90</span>,fontsize=fontsize)
+    cbar.set_ticks([<span style="color: #B452CD">0</span>,.<span style="color: #B452CD">2</span>,.<span style="color: #B452CD">4</span>,<span style="color: #B452CD">0.6</span>,<span style="color: #B452CD">0.8</span>,<span style="color: #B452CD">1.0</span>])
+    cbar.set_ticklabels([<span style="color: #CD5555">&#39;0%&#39;</span>,<span style="color: #CD5555">&#39;20%&#39;</span>,<span style="color: #CD5555">&#39;40%&#39;</span>,<span style="color: #CD5555">&#39;60%&#39;</span>,<span style="color: #CD5555">&#39;80%&#39;</span>,<span style="color: #CD5555">&#39;100%&#39;</span>])
+
+    <span style="color: #228B22"># put text on matrix elements</span>
+    <span style="color: #8B008B; font-weight: bold">for</span> i, x_val <span style="color: #8B008B">in</span> <span style="color: #658b00">enumerate</span>(np.arange(<span style="color: #658b00">len</span>(x))):
+        <span style="color: #8B008B; font-weight: bold">for</span> j, y_val <span style="color: #8B008B">in</span> <span style="color: #658b00">enumerate</span>(np.arange(<span style="color: #658b00">len</span>(y))):
+            c = <span style="color: #CD5555">&quot;${0:.1f}\\%$&quot;</span>.format( <span style="color: #B452CD">100</span>*data[j,i])  
+            ax.text(x_val, y_val, c, va=<span style="color: #CD5555">&#39;center&#39;</span>, ha=<span style="color: #CD5555">&#39;center&#39;</span>)
+
+    <span style="color: #228B22"># convert axis vaues to to string labels</span>
+    x=[<span style="color: #658b00">str</span>(i) <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> x]
+    y=[<span style="color: #658b00">str</span>(i) <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> y]
+
+
+    ax.set_xticklabels([<span style="color: #CD5555">&#39;&#39;</span>]+x)
+    ax.set_yticklabels([<span style="color: #CD5555">&#39;&#39;</span>]+y)
+
+    ax.set_xlabel(<span style="color: #CD5555">&#39;$\\mathrm{learning\\ rate}$&#39;</span>,fontsize=fontsize)
+    ax.set_ylabel(<span style="color: #CD5555">&#39;$\\mathrm{hidden\\ neurons}$&#39;</span>,fontsize=fontsize)
+    <span style="color: #8B008B; font-weight: bold">if</span> title <span style="color: #8B008B">is</span> <span style="color: #8B008B">not</span> <span style="color: #658b00">None</span>:
+        ax.set_title(title)
+
+    plt.tight_layout()
+
+    plt.show()
+    
+plot_data(eta,n_neuron,Train_accuracy, <span style="color: #CD5555">&#39;training&#39;</span>)
+plot_data(eta,n_neuron,Test_accuracy, <span style="color: #CD5555">&#39;testing&#39;</span>)
+</pre></div>
+<p>
 <!-- !split  -->
 
-<h2 id="___sec59">Which activation function should I use? </h2>
+<h2 id="___sec60">Which activation function should I use? </h2>
 
 <p>
 The Back propagation algorithm we derived above works by going from
@@ -2746,7 +2928,7 @@ learn at widely different speeds
 <p>
 <!-- !split  -->
 
-<h2 id="___sec60">Is the Logistic activation function (Sigmoid)  our choice? </h2>
+<h2 id="___sec61">Is the Logistic activation function (Sigmoid)  our choice? </h2>
 
 <p>
 Although this unfortunate behavior has been empirically observed for
@@ -2776,7 +2958,7 @@ better than the logistic function in deep networks).
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec61">The derivative of the Logistic funtion </h2>
+<h2 id="___sec62">The derivative of the Logistic funtion </h2>
 
 <p>
 Looking at the logistic activation function, when inputs become large
@@ -2812,7 +2994,7 @@ fast to compute).
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec62">The RELU function family </h2>
+<h2 id="___sec63">The RELU function family </h2>
 
 <p>
 The ReLU activation function suffers from a problem known as the dying
@@ -2839,7 +3021,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec63">Which activation function should we use? </h2>
+<h2 id="___sec64">Which activation function should we use? </h2>
 
 <p>
 In general it seems that the ELU activation function is better than
@@ -2859,7 +3041,7 @@ bootstrap to evaluate other activation functions.
 <p>
 <!-- !split  -->
 
-<h2 id="___sec64">A top-down perspective on Neural networks </h2>
+<h2 id="___sec65">A top-down perspective on Neural networks </h2>
 
 <p>
 The first thing we would like to do is divide the data into two or three
@@ -2901,7 +3083,7 @@ supervised learning.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec65">Limitations of supervised learning with deep networks </h2>
+<h2 id="___sec66">Limitations of supervised learning with deep networks </h2>
 
 <p>
 Like all statistical methods, supervised learning using neural

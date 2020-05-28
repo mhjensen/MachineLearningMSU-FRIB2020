@@ -126,22 +126,28 @@ Automatically generated HTML file from DocOnce source
               ('Using TensorFlow backend', 2, None, '___sec56'),
               ('Optimizing and using gradient descent', 2, None, '___sec57'),
               ('Using Keras', 2, None, '___sec58'),
-              ('Which activation function should I use?', 2, None, '___sec59'),
+              ('The Breast Cancer Data, now with Keras', 2, None, '___sec59'),
+              ('Which activation function should I use?', 2, None, '___sec60'),
               ('Is the Logistic activation function (Sigmoid)  our choice?',
                2,
                None,
-               '___sec60'),
-              ('The derivative of the Logistic funtion', 2, None, '___sec61'),
-              ('The RELU function family', 2, None, '___sec62'),
-              ('Which activation function should we use?', 2, None, '___sec63'),
+               '___sec61'),
+              ('The derivative of the Logistic funtion', 2, None, '___sec62'),
+              ('The RELU function family', 2, None, '___sec63'),
+              ('Which activation function should we use?', 2, None, '___sec64'),
               ('A top-down perspective on Neural networks',
                2,
                None,
-               '___sec64'),
+               '___sec65'),
               ('Limitations of supervised learning with deep networks',
                2,
                None,
-               '___sec65')]}
+               '___sec66'),
+              ('Examples: Pulsar identification', 2, None, '___sec67'),
+              ('Preprocessing and Statistical Analysis of the Data',
+               3,
+               None,
+               '___sec68')]}
 end of tocinfo -->
 
 <body>
@@ -238,13 +244,16 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="._NeuralNet-bs057.html#___sec56" style="font-size: 80%;"><b>Using TensorFlow backend</b></a></li>
      <!-- navigation toc: --> <li><a href="._NeuralNet-bs058.html#___sec57" style="font-size: 80%;"><b>Optimizing and using gradient descent</b></a></li>
      <!-- navigation toc: --> <li><a href="._NeuralNet-bs059.html#___sec58" style="font-size: 80%;"><b>Using Keras</b></a></li>
-     <!-- navigation toc: --> <li><a href="._NeuralNet-bs060.html#___sec59" style="font-size: 80%;"><b>Which activation function should I use?</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec60" style="font-size: 80%;"><b>Is the Logistic activation function (Sigmoid)  our choice?</b></a></li>
-     <!-- navigation toc: --> <li><a href="._NeuralNet-bs062.html#___sec61" style="font-size: 80%;"><b>The derivative of the Logistic funtion</b></a></li>
-     <!-- navigation toc: --> <li><a href="._NeuralNet-bs063.html#___sec62" style="font-size: 80%;"><b>The RELU function family</b></a></li>
-     <!-- navigation toc: --> <li><a href="._NeuralNet-bs064.html#___sec63" style="font-size: 80%;"><b>Which activation function should we use?</b></a></li>
-     <!-- navigation toc: --> <li><a href="._NeuralNet-bs065.html#___sec64" style="font-size: 80%;"><b>A top-down perspective on Neural networks</b></a></li>
-     <!-- navigation toc: --> <li><a href="._NeuralNet-bs066.html#___sec65" style="font-size: 80%;"><b>Limitations of supervised learning with deep networks</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs060.html#___sec59" style="font-size: 80%;"><b>The Breast Cancer Data, now with Keras</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec60" style="font-size: 80%;"><b>Which activation function should I use?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs062.html#___sec61" style="font-size: 80%;"><b>Is the Logistic activation function (Sigmoid)  our choice?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs063.html#___sec62" style="font-size: 80%;"><b>The derivative of the Logistic funtion</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs064.html#___sec63" style="font-size: 80%;"><b>The RELU function family</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs065.html#___sec64" style="font-size: 80%;"><b>Which activation function should we use?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs066.html#___sec65" style="font-size: 80%;"><b>A top-down perspective on Neural networks</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs067.html#___sec66" style="font-size: 80%;"><b>Limitations of supervised learning with deep networks</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs068.html#___sec67" style="font-size: 80%;"><b>Examples: Pulsar identification</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs068.html#___sec68" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Preprocessing and Statistical Analysis of the Data</a></li>
 
         </ul>
       </li>
@@ -260,32 +269,31 @@ MathJax.Hub.Config({
 <a name="part0061"></a>
 <!-- !split  -->
 
-<h2 id="___sec60" class="anchor">Is the Logistic activation function (Sigmoid)  our choice? </h2>
+<h2 id="___sec60" class="anchor">Which activation function should I use? </h2>
 
 <p>
-Although this unfortunate behavior has been empirically observed for
-quite a while (it was one of the reasons why deep neural networks were
-mostly abandoned for a long time), it is only around 2010 that
-significant progress was made in understanding it.
+The Back propagation algorithm we derived above works by going from
+the output layer to the input layer, propagating the error gradient on
+the way. Once the algorithm has computed the gradient of the cost
+function with regards to each parameter in the network, it uses these
+gradients to update each parameter with a Gradient Descent (GD) step.
 
 <p>
-A paper titled <a href="http://proceedings.mlr.press/v9/glorot10a.html" target="_self">Understanding the Difficulty of Training Deep
-Feedforward Neural Networks by Xavier Glorot and Yoshua Bengio</a> found that
-the problems with the popular logistic
-sigmoid activation function and the weight initialization technique
-that was most popular at the time, namely random initialization using
-a normal distribution with a mean of 0 and a standard deviation of
-1.
+Unfortunately for us, the gradients often get smaller and smaller as the
+algorithm progresses down to the first hidden layers. As a result, the
+GD update leaves the lower layer connection weights
+virtually unchanged, and training never converges to a good
+solution. This is known in the literature as 
+<b>the vanishing gradients problem</b>.
 
 <p>
-They showed that with this activation function and this
-initialization scheme, the variance of the outputs of each layer is
-much greater than the variance of its inputs. Going forward in the
-network, the variance keeps increasing after each layer until the
-activation function saturates at the top layers. This is actually made
-worse by the fact that the logistic function has a mean of 0.5, not 0
-(the hyperbolic tangent function has a mean of 0 and behaves slightly
-better than the logistic function in deep networks).
+In other cases, the opposite can happen, namely the the gradients can grow bigger and
+bigger. The result is that many of the layers get large updates of the 
+weights the
+algorithm diverges. This is the <b>exploding gradients problem</b>, which is
+mostly encountered in recurrent neural networks. More generally, deep
+neural networks suffer from unstable gradients, different layers may
+learn at widely different speeds
 
 <p>
 <p>
@@ -308,6 +316,8 @@ better than the logistic function in deep networks).
   <li><a href="._NeuralNet-bs064.html">65</a></li>
   <li><a href="._NeuralNet-bs065.html">66</a></li>
   <li><a href="._NeuralNet-bs066.html">67</a></li>
+  <li><a href="._NeuralNet-bs067.html">68</a></li>
+  <li><a href="._NeuralNet-bs068.html">69</a></li>
   <li><a href="._NeuralNet-bs062.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->

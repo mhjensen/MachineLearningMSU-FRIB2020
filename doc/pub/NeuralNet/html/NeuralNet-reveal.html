@@ -148,7 +148,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Physics and Astronomy and National Superconducting Cyclotron Laboratory, Michigan State University</b></center>
 <br>
 <p>&nbsp;<br>
-<center><h4>May 26, 2020</h4></center> <!-- date -->
+<center><h4>May 28, 2020</h4></center> <!-- date -->
 <br>
 <p>
 
@@ -2560,7 +2560,11 @@ X_train, X_test, Y_train, Y_test = train_test_split(inputs, labels, train_size=t
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">tensorflow</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">tf</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #228B22">#import tensorflow as tf</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">tensorflow.compat.v1</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">tf</span>
+tf.disable_v2_behavior()
+tf.reset_default_graph()
+
 
 <span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">NeuralNetworkTensorflow</span>:
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(
@@ -2874,7 +2878,185 @@ plt.show()
 
 
 <section>
-<h2 id="___sec59">Which activation function should I use? </h2>
+<h2 id="___sec59">The Breast Cancer Data, now with Keras </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">tensorflow.compat.v1</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">tf</span>
+tf.disable_v2_behavior()
+tf.reset_default_graph()
+
+
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">keras.models</span> <span style="color: #8B008B; font-weight: bold">import</span> Sequential      <span style="color: #228B22">#This allows appending layers to existing models</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">keras.layers</span> <span style="color: #8B008B; font-weight: bold">import</span> Dense           <span style="color: #228B22">#This allows defining the characteristics of a particular layer</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">keras</span> <span style="color: #8B008B; font-weight: bold">import</span> optimizers             <span style="color: #228B22">#This allows using whichever optimiser we want (sgd,adam,RMSprop)</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">keras</span> <span style="color: #8B008B; font-weight: bold">import</span> regularizers           <span style="color: #228B22">#This allows using whichever regularizer we want (l1,l2,l1_l2)</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">keras.utils</span> <span style="color: #8B008B; font-weight: bold">import</span> to_categorical   <span style="color: #228B22">#This allows using categorical cross entropy as the cost function</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">seaborn</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">sns</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> train_test_split <span style="color: #8B008B; font-weight: bold">as</span> splitter
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.datasets</span> <span style="color: #8B008B; font-weight: bold">import</span> load_breast_cancer
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">pickle</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span> 
+
+
+<span style="color: #CD5555">&quot;&quot;&quot;Load breast cancer dataset&quot;&quot;&quot;</span>
+
+np.random.seed(<span style="color: #B452CD">0</span>)        <span style="color: #228B22">#create same seed for random number every time</span>
+
+cancer=load_breast_cancer()      <span style="color: #228B22">#Download breast cancer dataset</span>
+
+inputs=cancer.data                     <span style="color: #228B22">#Feature matrix of 569 rows (samples) and 30 columns (parameters)</span>
+outputs=cancer.target                  <span style="color: #228B22">#Label array of 569 rows (0 for benign and 1 for malignant)</span>
+labels=cancer.feature_names[<span style="color: #B452CD">0</span>:<span style="color: #B452CD">30</span>]
+
+<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&#39;The content of the breast cancer dataset is:&#39;</span>)      <span style="color: #228B22">#Print information about the datasets</span>
+<span style="color: #8B008B; font-weight: bold">print</span>(labels)
+<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&#39;-------------------------&#39;</span>)
+<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&quot;inputs =  &quot;</span> + <span style="color: #658b00">str</span>(inputs.shape))
+<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&quot;outputs =  &quot;</span> + <span style="color: #658b00">str</span>(outputs.shape))
+<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&quot;labels =  &quot;</span>+ <span style="color: #658b00">str</span>(labels.shape))
+
+x=inputs      <span style="color: #228B22">#Reassign the Feature and Label matrices to other variables</span>
+y=outputs
+
+<span style="color: #228B22">#%% </span>
+
+<span style="color: #228B22"># Visualisation of dataset (for correlation analysis)</span>
+
+plt.figure()
+plt.scatter(x[:,<span style="color: #B452CD">0</span>],x[:,<span style="color: #B452CD">2</span>],s=<span style="color: #B452CD">40</span>,c=y,cmap=plt.cm.Spectral)
+plt.xlabel(<span style="color: #CD5555">&#39;Mean radius&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.ylabel(<span style="color: #CD5555">&#39;Mean perimeter&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.show()
+
+plt.figure()
+plt.scatter(x[:,<span style="color: #B452CD">5</span>],x[:,<span style="color: #B452CD">6</span>],s=<span style="color: #B452CD">40</span>,c=y, cmap=plt.cm.Spectral)
+plt.xlabel(<span style="color: #CD5555">&#39;Mean compactness&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.ylabel(<span style="color: #CD5555">&#39;Mean concavity&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.show()
+
+
+plt.figure()
+plt.scatter(x[:,<span style="color: #B452CD">0</span>],x[:,<span style="color: #B452CD">1</span>],s=<span style="color: #B452CD">40</span>,c=y,cmap=plt.cm.Spectral)
+plt.xlabel(<span style="color: #CD5555">&#39;Mean radius&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.ylabel(<span style="color: #CD5555">&#39;Mean texture&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.show()
+
+plt.figure()
+plt.scatter(x[:,<span style="color: #B452CD">2</span>],x[:,<span style="color: #B452CD">1</span>],s=<span style="color: #B452CD">40</span>,c=y,cmap=plt.cm.Spectral)
+plt.xlabel(<span style="color: #CD5555">&#39;Mean perimeter&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.ylabel(<span style="color: #CD5555">&#39;Mean compactness&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.show()
+
+
+<span style="color: #228B22"># Generate training and testing datasets</span>
+
+<span style="color: #228B22">#Select features relevant to classification (texture,perimeter,compactness and symmetery) </span>
+<span style="color: #228B22">#and add to input matrix</span>
+
+temp1=np.reshape(x[:,<span style="color: #B452CD">1</span>],(<span style="color: #658b00">len</span>(x[:,<span style="color: #B452CD">1</span>]),<span style="color: #B452CD">1</span>))
+temp2=np.reshape(x[:,<span style="color: #B452CD">2</span>],(<span style="color: #658b00">len</span>(x[:,<span style="color: #B452CD">2</span>]),<span style="color: #B452CD">1</span>))
+X=np.hstack((temp1,temp2))      
+temp=np.reshape(x[:,<span style="color: #B452CD">5</span>],(<span style="color: #658b00">len</span>(x[:,<span style="color: #B452CD">5</span>]),<span style="color: #B452CD">1</span>))
+X=np.hstack((X,temp))       
+temp=np.reshape(x[:,<span style="color: #B452CD">8</span>],(<span style="color: #658b00">len</span>(x[:,<span style="color: #B452CD">8</span>]),<span style="color: #B452CD">1</span>))
+X=np.hstack((X,temp))       
+
+X_train,X_test,y_train,y_test=splitter(X,y,test_size=<span style="color: #B452CD">0.1</span>)   <span style="color: #228B22">#Split datasets into training and testing</span>
+
+y_train=to_categorical(y_train)     <span style="color: #228B22">#Convert labels to categorical when using categorical cross entropy</span>
+y_test=to_categorical(y_test)
+
+<span style="color: #8B008B; font-weight: bold">del</span> temp1,temp2,temp
+
+<span style="color: #228B22"># %%</span>
+
+<span style="color: #228B22"># Define tunable parameters&quot;</span>
+
+eta=np.logspace(-<span style="color: #B452CD">3</span>,-<span style="color: #B452CD">1</span>,<span style="color: #B452CD">3</span>)                    <span style="color: #228B22">#Define vector of learning rates (parameter to SGD optimiser)</span>
+lamda=<span style="color: #B452CD">0.01</span>                                  <span style="color: #228B22">#Define hyperparameter</span>
+n_layers=<span style="color: #B452CD">2</span>                                  <span style="color: #228B22">#Define number of hidden layers in the model</span>
+n_neuron=np.logspace(<span style="color: #B452CD">0</span>,<span style="color: #B452CD">3</span>,<span style="color: #B452CD">4</span>,dtype=<span style="color: #658b00">int</span>)       <span style="color: #228B22">#Define number of neurons per layer</span>
+epochs=<span style="color: #B452CD">100</span>                                   <span style="color: #228B22">#Number of reiterations over the input data</span>
+batch_size=<span style="color: #B452CD">100</span>                              <span style="color: #228B22">#Number of samples per gradient update</span>
+
+<span style="color: #228B22"># %%</span>
+
+<span style="color: #CD5555">&quot;&quot;&quot;Define function to return Deep Neural Network model&quot;&quot;&quot;</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">NN_model</span>(inputsize,n_layers,n_neuron,eta,lamda):
+    model=Sequential()      
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(n_layers):       <span style="color: #228B22">#Run loop to add hidden layers to the model</span>
+        <span style="color: #8B008B; font-weight: bold">if</span> (i==<span style="color: #B452CD">0</span>):                  <span style="color: #228B22">#First layer requires input dimensions</span>
+            model.add(Dense(n_neuron,activation=<span style="color: #CD5555">&#39;relu&#39;</span>,kernel_regularizer=regularizers.l2(lamda),input_dim=inputsize))
+        <span style="color: #8B008B; font-weight: bold">else</span>:                       <span style="color: #228B22">#Subsequent layers are capable of automatic shape inferencing</span>
+            model.add(Dense(n_neuron,activation=<span style="color: #CD5555">&#39;relu&#39;</span>,kernel_regularizer=regularizers.l2(lamda)))
+    model.add(Dense(<span style="color: #B452CD">2</span>,activation=<span style="color: #CD5555">&#39;softmax&#39;</span>))  <span style="color: #228B22">#2 outputs - ordered and disordered (softmax for prob)</span>
+    sgd=optimizers.SGD(lr=eta)
+    model.compile(loss=<span style="color: #CD5555">&#39;categorical_crossentropy&#39;</span>,optimizer=sgd,metrics=[<span style="color: #CD5555">&#39;accuracy&#39;</span>])
+    <span style="color: #8B008B; font-weight: bold">return</span> model
+
+    
+Train_accuracy=np.zeros((<span style="color: #658b00">len</span>(n_neuron),<span style="color: #658b00">len</span>(eta)))      <span style="color: #228B22">#Define matrices to store accuracy scores as a function</span>
+Test_accuracy=np.zeros((<span style="color: #658b00">len</span>(n_neuron),<span style="color: #658b00">len</span>(eta)))       <span style="color: #228B22">#of learning rate and number of hidden neurons for </span>
+
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(n_neuron)):     <span style="color: #228B22">#run loops over hidden neurons and learning rates to calculate </span>
+    <span style="color: #8B008B; font-weight: bold">for</span> j <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(eta)):      <span style="color: #228B22">#accuracy scores </span>
+        DNN_model=NN_model(X_train.shape[<span style="color: #B452CD">1</span>],n_layers,n_neuron[i],eta[j],lamda)
+        DNN_model.fit(X_train,y_train,epochs=epochs,batch_size=batch_size,verbose=<span style="color: #B452CD">1</span>)
+        Train_accuracy[i,j]=DNN_model.evaluate(X_train,y_train)[<span style="color: #B452CD">1</span>]
+        Test_accuracy[i,j]=DNN_model.evaluate(X_test,y_test)[<span style="color: #B452CD">1</span>]
+               
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">plot_data</span>(x,y,data,title=<span style="color: #658b00">None</span>):
+
+    <span style="color: #228B22"># plot results</span>
+    fontsize=<span style="color: #B452CD">16</span>
+
+
+    fig = plt.figure()
+    ax = fig.add_subplot(<span style="color: #B452CD">111</span>)
+    cax = ax.matshow(data, interpolation=<span style="color: #CD5555">&#39;nearest&#39;</span>, vmin=<span style="color: #B452CD">0</span>, vmax=<span style="color: #B452CD">1</span>)
+    
+    cbar=fig.colorbar(cax)
+    cbar.ax.set_ylabel(<span style="color: #CD5555">&#39;accuracy (%)&#39;</span>,rotation=<span style="color: #B452CD">90</span>,fontsize=fontsize)
+    cbar.set_ticks([<span style="color: #B452CD">0</span>,.<span style="color: #B452CD">2</span>,.<span style="color: #B452CD">4</span>,<span style="color: #B452CD">0.6</span>,<span style="color: #B452CD">0.8</span>,<span style="color: #B452CD">1.0</span>])
+    cbar.set_ticklabels([<span style="color: #CD5555">&#39;0%&#39;</span>,<span style="color: #CD5555">&#39;20%&#39;</span>,<span style="color: #CD5555">&#39;40%&#39;</span>,<span style="color: #CD5555">&#39;60%&#39;</span>,<span style="color: #CD5555">&#39;80%&#39;</span>,<span style="color: #CD5555">&#39;100%&#39;</span>])
+
+    <span style="color: #228B22"># put text on matrix elements</span>
+    <span style="color: #8B008B; font-weight: bold">for</span> i, x_val <span style="color: #8B008B">in</span> <span style="color: #658b00">enumerate</span>(np.arange(<span style="color: #658b00">len</span>(x))):
+        <span style="color: #8B008B; font-weight: bold">for</span> j, y_val <span style="color: #8B008B">in</span> <span style="color: #658b00">enumerate</span>(np.arange(<span style="color: #658b00">len</span>(y))):
+            c = <span style="color: #CD5555">&quot;${0:.1f}\\%$&quot;</span>.format( <span style="color: #B452CD">100</span>*data[j,i])  
+            ax.text(x_val, y_val, c, va=<span style="color: #CD5555">&#39;center&#39;</span>, ha=<span style="color: #CD5555">&#39;center&#39;</span>)
+
+    <span style="color: #228B22"># convert axis vaues to to string labels</span>
+    x=[<span style="color: #658b00">str</span>(i) <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> x]
+    y=[<span style="color: #658b00">str</span>(i) <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> y]
+
+
+    ax.set_xticklabels([<span style="color: #CD5555">&#39;&#39;</span>]+x)
+    ax.set_yticklabels([<span style="color: #CD5555">&#39;&#39;</span>]+y)
+
+    ax.set_xlabel(<span style="color: #CD5555">&#39;$\\mathrm{learning\\ rate}$&#39;</span>,fontsize=fontsize)
+    ax.set_ylabel(<span style="color: #CD5555">&#39;$\\mathrm{hidden\\ neurons}$&#39;</span>,fontsize=fontsize)
+    <span style="color: #8B008B; font-weight: bold">if</span> title <span style="color: #8B008B">is</span> <span style="color: #8B008B">not</span> <span style="color: #658b00">None</span>:
+        ax.set_title(title)
+
+    plt.tight_layout()
+
+    plt.show()
+    
+plot_data(eta,n_neuron,Train_accuracy, <span style="color: #CD5555">&#39;training&#39;</span>)
+plot_data(eta,n_neuron,Test_accuracy, <span style="color: #CD5555">&#39;testing&#39;</span>)
+</pre></div>
+</section>
+
+
+<section>
+<h2 id="___sec60">Which activation function should I use? </h2>
 
 <p>
 The Back propagation algorithm we derived above works by going from
@@ -2903,7 +3085,7 @@ learn at widely different speeds
 
 
 <section>
-<h2 id="___sec60">Is the Logistic activation function (Sigmoid)  our choice? </h2>
+<h2 id="___sec61">Is the Logistic activation function (Sigmoid)  our choice? </h2>
 
 <p>
 Although this unfortunate behavior has been empirically observed for
@@ -2933,7 +3115,7 @@ better than the logistic function in deep networks).
 
 
 <section>
-<h2 id="___sec61">The derivative of the Logistic funtion </h2>
+<h2 id="___sec62">The derivative of the Logistic funtion </h2>
 
 <p>
 Looking at the logistic activation function, when inputs become large
@@ -2969,7 +3151,7 @@ fast to compute).
 
 
 <section>
-<h2 id="___sec62">The RELU function family </h2>
+<h2 id="___sec63">The RELU function family </h2>
 
 <p>
 The ReLU activation function suffers from a problem known as the dying
@@ -2998,7 +3180,7 @@ $$
 
 
 <section>
-<h2 id="___sec63">Which activation function should we use? </h2>
+<h2 id="___sec64">Which activation function should we use? </h2>
 
 <p>
 In general it seems that the ELU activation function is better than
@@ -3018,7 +3200,7 @@ bootstrap to evaluate other activation functions.
 
 
 <section>
-<h2 id="___sec64">A top-down perspective on Neural networks </h2>
+<h2 id="___sec65">A top-down perspective on Neural networks </h2>
 
 <p>
 The first thing we would like to do is divide the data into two or three
@@ -3061,7 +3243,7 @@ supervised learning.
 
 
 <section>
-<h2 id="___sec65">Limitations of supervised learning with deep networks </h2>
+<h2 id="___sec66">Limitations of supervised learning with deep networks </h2>
 
 <p>
 Like all statistical methods, supervised learning using neural
@@ -3084,6 +3266,392 @@ Here we list some of the important limitations of supervised neural network base
 <p>
 
 Some of these remarks are particular to DNNs, others are shared by all supervised learning methods. This motivates the use of unsupervised methods which in part circumvent these problems.
+</section>
+
+
+<section>
+<h2 id="___sec67">Examples: Pulsar identification </h2>
+
+<p>
+Pulsar classification can be one of the best training grounds for
+performing machine learning in astrophysics. These pulsars are said to
+be "pulsating radio sources", which have now been identified to be
+caused by rapidly rotating highly magnetized neutron stars and are
+detectable here on Earth . One of the characteristic properties of
+these pulsars is that they exhibit periodic bursts of emission
+produced by their radio emitting jets. The direction of their emission
+also rotates with them and sweep the sky like a lighthouse. This gives
+astronomers information about the phenomenon as they observe a pulse
+of radio emission each time one of the jets points towards the Earth.
+
+<p>
+The study and detection of pulsars provide a wealth of information
+about the physics of neutron stars. They are also used as probes
+of stellar evolution. In addition, they are being used to test or
+verify some concepts in general relativity due to their extremely high
+densities. These allowed them to be good observables in detecting and
+mapping gravitational wave signatures. One problem, however, is that
+they are very difficult to identify in the large stream of data from
+radio telescopes. Moreover, a lot of man-made sources of radio
+frequency interference are also present, which can produce the same
+signals as pulsars. Hence, the classification of pulsars from possible
+candidate data is of great importance.
+
+<p>
+In reality, pulsars are very weak radio sources. They are classified
+from a given data sample by first extracting information from the pool
+of data and then identifying which features or characteristics are
+relevant. Since the individual pulses are very much different,
+astronomers particularly stack them up and generate an integrated
+pulse profile for pulsar classification. This profile is the coherent
+addition of thousands of pulses together in a process known as folding
+[1]. Moreover, pulses will arrive at various times across different
+radio frequencies. The delay of these pulses from frequency to
+frequency is called dispersion and is said to be caused by the ionized
+inter-stellar medium. The method usually employed by astronomers
+is that they fit for the shape of the delay as to reduce its negative
+effect. However, as with all kinds of fitting procedures, there would
+always be an uncertainty associated with it. This is expressed in the
+so-called DM-SNR ("dispersion-measure-signal-to-noise-ratio")
+curve. Both the integrated profile curve and DM-SNR curve are used in
+identifying possible pulsar candidates. These curves provide eight
+numerical characteristic features as depicted and listed below. </div>
+
+<p>
+For this dataset, there is already an initial classification of the
+potential pulsar candidates as pulsars and non-pulsars by the
+astronomy community. We aim here to perform machine learning and try
+to build a model that can detect patterns within the data. This will
+eventually lead to the correct classification of new potential pulsars
+that will soon be observed.
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #228B22"># reading and handling the data</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">pandas</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">pd</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">warnings</span>
+warnings.filterwarnings(<span style="color: #CD5555">&quot;ignore&quot;</span>)
+data = pd.read_csv(<span style="color: #CD5555">&quot;pulsar_stars.csv&quot;</span>)
+<span style="color: #228B22"># print a part of the dataset</span>
+data.head()
+<span style="color: #8B008B; font-weight: bold">print</span> (<span style="color: #CD5555">&quot;Number of rows    :&quot;</span>,data.shape[<span style="color: #B452CD">0</span>])
+<span style="color: #8B008B; font-weight: bold">print</span> (<span style="color: #CD5555">&quot;Number of columns :&quot;</span>,data.shape[<span style="color: #B452CD">1</span>])
+<span style="color: #8B008B; font-weight: bold">print</span> (<span style="color: #CD5555">&quot;data info  :&quot;</span>,data.info())
+<span style="color: #8B008B; font-weight: bold">print</span> (data.isnull().sum())
+
+<span style="color: #228B22"># import packages for plotting</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">seaborn</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">sns</span>
+
+plt.figure(figsize=(<span style="color: #B452CD">12</span>,<span style="color: #B452CD">6</span>))
+plt.subplot(<span style="color: #B452CD">121</span>)
+ax = sns.countplot(y = data[<span style="color: #CD5555">&quot;target_class&quot;</span>],
+                   palette=[<span style="color: #CD5555">&quot;r&quot;</span>,<span style="color: #CD5555">&quot;g&quot;</span>],
+                   linewidth=<span style="color: #B452CD">1</span>,
+                   edgecolor=<span style="color: #CD5555">&quot;k&quot;</span>*<span style="color: #B452CD">2</span>)
+<span style="color: #8B008B; font-weight: bold">for</span> i,j <span style="color: #8B008B">in</span> <span style="color: #658b00">enumerate</span>(data[<span style="color: #CD5555">&quot;target_class&quot;</span>].value_counts().values):
+    ax.text(.<span style="color: #B452CD">7</span>,i,j,weight = <span style="color: #CD5555">&quot;bold&quot;</span>,fontsize = <span style="color: #B452CD">27</span>)
+plt.title(<span style="color: #CD5555">&quot;Count for target variable in dataset&quot;</span>)
+
+
+plt.subplot(<span style="color: #B452CD">122</span>)
+plt.pie(data[<span style="color: #CD5555">&quot;target_class&quot;</span>].value_counts().values,
+        labels=[<span style="color: #CD5555">&quot;not pulsar stars&quot;</span>,<span style="color: #CD5555">&quot;pulsar stars&quot;</span>],
+        autopct=<span style="color: #CD5555">&quot;%1.0f%%&quot;</span>,wedgeprops={<span style="color: #CD5555">&quot;linewidth&quot;</span>:<span style="color: #B452CD">2</span>,<span style="color: #CD5555">&quot;edgecolor&quot;</span>:<span style="color: #CD5555">&quot;white&quot;</span>})
+my_circ = plt.Circle((<span style="color: #B452CD">0</span>,<span style="color: #B452CD">0</span>),.<span style="color: #B452CD">7</span>,color = <span style="color: #CD5555">&quot;white&quot;</span>)
+plt.gca().add_artist(my_circ)
+plt.subplots_adjust(wspace = .<span style="color: #B452CD">2</span>)
+plt.title(<span style="color: #CD5555">&quot;Proportion of target variable in dataset&quot;</span>)
+plt.show()
+</pre></div>
+<p>
+The dataset contains 17898 candidates for which only 1639 (~9%) are
+classified as real pulsars. In addition, the dataset consists of
+features rather than raw data from observations. The eight features
+considered in the study are given above as column headers. The first
+four are the usual statistics obtained from the integrated pulse
+profile. A class label ("target_class") is also included which
+determines if the candidate is considered to be a pulsar (1) or not
+(0). This serves as our target column for the analysis.
+
+<h3 id="___sec68">Preprocessing and Statistical Analysis of the Data </h3>
+
+<p>
+When dealing with all sorts of data, an important first step is to
+often get a sense on how the variables are distributed. As seen above,
+the dataset can be considered clean and complete as there are no
+missing data and the number of features is relatively small. This
+reduces extra steps towards feature engineering as there is not much
+to do for artificial design features. Thus, we can see readily that
+the preprocessing stage only involves two main issues. First is the
+possible problem of overfitting since the difference between the
+numbers of candidates identified as pulsars and non-pulsars is large,
+with a ratio of about 1:10. The other issue is the huge distribution
+for the range differences of the eight features. This is evident in
+Figure 4 which depicts the distribution of variables in the dataset
+with associated mean and standard deviation. The plots were done using
+the distplot() function in the package seaborn. This draws a histogram
+and fit a kernel density estimate (KDE).
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #228B22"># import package</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">itertools</span>
+<span style="color: #228B22"># rename column headers for convenience</span>
+data = data.rename(columns={<span style="color: #CD5555">&quot; Mean of the integrated profile&quot;</span>: <span style="color: #CD5555">&quot;Mean profile&quot;</span>, <span style="color: #CD5555">&quot; Standard deviation of the integrated profile&quot;</span>: <span style="color: #CD5555">&quot;StD profile&quot;</span>, 
+                    <span style="color: #CD5555">&quot; Excess kurtosis of the integrated profile&quot;</span>: <span style="color: #CD5555">&quot;Kurtosis profile&quot;</span>, <span style="color: #CD5555">&quot; Skewness of the integrated profile&quot;</span>: <span style="color: #CD5555">&quot;Skewness profile&quot;</span>,
+                    <span style="color: #CD5555">&quot; Mean of the DM-SNR curve&quot;</span>: <span style="color: #CD5555">&quot;Mean DM-SNR&quot;</span>, <span style="color: #CD5555">&quot; Standard deviation of the DM-SNR curve&quot;</span>: <span style="color: #CD5555">&quot;StD DM-SNR&quot;</span>, 
+                    <span style="color: #CD5555">&quot; Excess kurtosis of the DM-SNR curve&quot;</span>: <span style="color: #CD5555">&quot;Kurtosis DM-SNR&quot;</span>, <span style="color: #CD5555">&quot; Skewness of the DM-SNR curve&quot;</span>: <span style="color: #CD5555">&quot;Skewness DM-SNR&quot;</span>,
+                    <span style="color: #CD5555">&quot;target_class&quot;</span>: <span style="color: #CD5555">&quot;Target class&quot;</span>})
+
+<span style="color: #228B22"># distribution of variable in the dataset</span>
+columns = [<span style="color: #CD5555">&#39;Mean profile&#39;</span>, <span style="color: #CD5555">&#39;StD profile&#39;</span>, <span style="color: #CD5555">&#39;Kurtosis profile&#39;</span>, <span style="color: #CD5555">&#39;Skewness profile&#39;</span>,
+           <span style="color: #CD5555">&#39;Mean DM-SNR&#39;</span>, <span style="color: #CD5555">&#39;StD DM-SNR&#39;</span>, <span style="color: #CD5555">&#39;Kurtosis DM-SNR&#39;</span>,
+           <span style="color: #CD5555">&#39;Skewness DM-SNR&#39;</span>]
+length  = <span style="color: #658b00">len</span>(columns)
+colors  = [<span style="color: #CD5555">&quot;r&quot;</span>,<span style="color: #CD5555">&quot;g&quot;</span>,<span style="color: #CD5555">&quot;b&quot;</span>,<span style="color: #CD5555">&quot;m&quot;</span>,<span style="color: #CD5555">&quot;y&quot;</span>,<span style="color: #CD5555">&quot;c&quot;</span>,<span style="color: #CD5555">&quot;k&quot;</span>,<span style="color: #CD5555">&quot;orange&quot;</span>] 
+
+plt.figure(figsize=(<span style="color: #B452CD">13</span>,<span style="color: #B452CD">20</span>))
+<span style="color: #8B008B; font-weight: bold">for</span> i,j,k <span style="color: #8B008B">in</span> itertools.zip_longest(columns,<span style="color: #658b00">range</span>(length),colors):
+    plt.subplot(length/<span style="color: #B452CD">2</span>,length/<span style="color: #B452CD">4</span>,j+<span style="color: #B452CD">1</span>)
+    sns.distplot(data[i],color=k)
+    plt.title(i)
+    plt.subplots_adjust(hspace = .<span style="color: #B452CD">3</span>)
+    plt.axvline(data[i].mean(),color = <span style="color: #CD5555">&quot;k&quot;</span>,linestyle=<span style="color: #CD5555">&quot;dashed&quot;</span>,label=<span style="color: #CD5555">&quot;MEAN&quot;</span>)
+    plt.axvline(data[i].std(),color = <span style="color: #CD5555">&quot;b&quot;</span>,linestyle=<span style="color: #CD5555">&quot;dotted&quot;</span>,label=<span style="color: #CD5555">&quot;STANDARD DEVIATION&quot;</span>)
+    plt.legend(loc=<span style="color: #CD5555">&quot;upper right&quot;</span>)
+</pre></div>
+<p>
+Before delving into any analysis, we would like to decrease the amount
+of data to look at. This can be achieved by performing a correlation
+plot. As seen in Figure 5, the features that correlate the most with
+the class (pulsar or non-pulsar) are the mean, the excess kurtosis,
+and the skewness of the integrated profile. We could choose to only
+analyze these, but this would mean that pulsars can be identified with
+only one of the two plots that astrophysicists use to classify the
+data. In this case, colinearity may become a problem since these
+features are strongly correlated with each other.
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #228B22"># correlation matrix</span>
+corr_matrix = data.corr()
+</pre></div>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #228B22"># Pair plots</span>
+sns.pairplot(data,hue = <span style="color: #CD5555">&quot;Target class&quot;</span>)
+plt.title(<span style="color: #CD5555">&quot;Pair plot for variables&quot;</span>)
+<span style="color: #228B22"># plt.savefig(&#39;pairplot.png&#39;,bbox_inches=&#39;tight&#39;)</span>
+plt.show()
+
+<span style="color: #228B22"># Violin Plot</span>
+columns = [x <span style="color: #8B008B; font-weight: bold">for</span> x <span style="color: #8B008B">in</span> data.columns <span style="color: #8B008B; font-weight: bold">if</span> x <span style="color: #8B008B">not</span> <span style="color: #8B008B">in</span> [<span style="color: #CD5555">&quot;Target class&quot;</span>]]
+length  = <span style="color: #658b00">len</span>(columns)
+plt.figure(figsize=(<span style="color: #B452CD">13</span>,<span style="color: #B452CD">25</span>))
+<span style="color: #8B008B; font-weight: bold">for</span> i,j <span style="color: #8B008B">in</span> itertools.zip_longest(columns,<span style="color: #658b00">range</span>(length)):
+    plt.subplot(length/<span style="color: #B452CD">2</span>,length/<span style="color: #B452CD">4</span>,j+<span style="color: #B452CD">1</span>)
+    sns.violinplot(x=data[<span style="color: #CD5555">&quot;Target class&quot;</span>],y=data[i],
+                   palette=[<span style="color: #CD5555">&quot;Orangered&quot;</span>,<span style="color: #CD5555">&quot;lime&quot;</span>],alpha=.<span style="color: #B452CD">5</span>)
+    plt.title(i)
+<span style="color: #228B22">#plt.savefig(&#39;violinplot.png&#39;,bbox_inches=&#39;tight&#39;)</span>
+plt.show()
+</pre></div>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #228B22"># Logistc regression</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">seaborn</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">sns</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.linear_model</span> <span style="color: #8B008B; font-weight: bold">import</span> LogisticRegression
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.preprocessing</span> <span style="color: #8B008B; font-weight: bold">import</span> StandardScaler
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> train_test_split
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> KFold
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.metrics</span> <span style="color: #8B008B; font-weight: bold">import</span> confusion_matrix
+
+<span style="color: #228B22"># We define the hyperparameters to be used</span>
+nlambdas = <span style="color: #B452CD">500</span> <span style="color: #228B22"># why not? the code runs relatively fast</span>
+lmbdas = np.logspace(-<span style="color: #B452CD">5</span>, <span style="color: #B452CD">5</span>, nlambdas)
+kfold = KFold(n_splits = <span style="color: #B452CD">5</span>) <span style="color: #228B22">#cross validation spliting</span>
+
+
+<span style="color: #228B22"># We preallocate data </span>
+<span style="color: #228B22"># true values that will be found later</span>
+train_accuracy=np.zeros(lmbdas.shape,np.float64)
+test_accuracy=np.zeros(lmbdas.shape,np.float64)
+train_red_accuracy=np.zeros(lmbdas.shape,np.float64)
+test_red_accuracy=np.zeros(lmbdas.shape,np.float64)
+<span style="color: #228B22"># dummy arrays to be averaged later on</span>
+train_accuracy_d=np.zeros(<span style="color: #B452CD">5</span>,np.float64)
+test_accuracy_d=np.zeros(<span style="color: #B452CD">5</span>,np.float64)
+train_red_accuracy_d=np.zeros(<span style="color: #B452CD">5</span>,np.float64)
+test_red_accuracy_d=np.zeros(<span style="color: #B452CD">5</span>,np.float64)
+
+<span style="color: #228B22"># We create the design matrix X and separate the labels into Y</span>
+x_fea = [x <span style="color: #8B008B; font-weight: bold">for</span> x <span style="color: #8B008B">in</span> data.columns <span style="color: #8B008B; font-weight: bold">if</span> x <span style="color: #8B008B">not</span> <span style="color: #8B008B">in</span> [<span style="color: #CD5555">&#39;Target class&#39;</span>]]
+<span style="color: #228B22">#print(x_fea)</span>
+X = np.zeros((data.shape[<span style="color: #B452CD">0</span>],data.shape[<span style="color: #B452CD">1</span>]-<span style="color: #B452CD">1</span>))
+X_red = np.zeros((data.shape[<span style="color: #B452CD">0</span>],<span style="color: #B452CD">3</span>))
+Y = np.zeros(data.shape[<span style="color: #B452CD">0</span>])
+<span style="color: #8B008B; font-weight: bold">for</span> i,feature <span style="color: #8B008B">in</span> <span style="color: #658b00">enumerate</span>(x_fea): <span style="color: #228B22"># Here we just take the variables of interest</span>
+    X[:,i] = data[feature]
+    <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #CD5555">&#39;Mean profile&#39;</span> == feature:
+        X_red[:,<span style="color: #B452CD">0</span>]
+    <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #CD5555">&#39;Kurtosis profile&#39;</span> == feature:
+        X_red[:,<span style="color: #B452CD">1</span>]
+    <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #CD5555">&#39;Skewness profile&#39;</span>== feature: 
+        X_red[:,<span style="color: #B452CD">2</span>]
+Y[:] = data[<span style="color: #CD5555">&#39;Target class&#39;</span>]
+<span style="color: #228B22"># We perform a logistic regression for each value of lambda</span>
+<span style="color: #8B008B; font-weight: bold">for</span> i,lmbda <span style="color: #8B008B">in</span> <span style="color: #658b00">enumerate</span>(lmbdas):
+    <span style="color: #228B22">#define model</span>
+    logreg = LogisticRegression(C=<span style="color: #B452CD">1.0</span>/lmbda,solver=<span style="color: #CD5555">&#39;liblinear&#39;</span>)
+
+    <span style="color: #228B22"># Perform the cross-validation</span>
+    j = <span style="color: #B452CD">0</span>
+    <span style="color: #8B008B; font-weight: bold">for</span> train_inds, test_inds <span style="color: #8B008B">in</span> kfold.split(X):
+        <span style="color: #228B22"># Do the split</span>
+        X_train = X[train_inds]
+        X_red_train = X_red[train_inds]
+        Y_train = Y[train_inds]
+
+        X_test = X[test_inds]
+        X_red_test = X_red[test_inds]
+        Y_test = Y[test_inds]
+
+        <span style="color: #228B22"># We will scale the data</span>
+        scaler = StandardScaler()
+        scaler.fit(X_train)
+        <span style="color: #228B22"># first on full data</span>
+        X_train = scaler.transform(X_train)
+        X_test = scaler.transform(X_test)
+        <span style="color: #228B22"># then rescale and do on reduced data</span>
+        scaler.fit(X_red_train)
+        X_red_train = scaler.transform(X_red_train)
+        X_red_test = scaler.transform(X_red_test)
+        <span style="color: #8B008B; font-weight: bold">del</span> scaler
+
+        <span style="color: #228B22"># calculate accuracies for the k fold</span>
+        logreg.fit(X_train, Y_train)
+        train_accuracy_d[j]=logreg.score(X_train,Y_train)
+        test_accuracy_d[j]=logreg.score(X_test,Y_test)
+
+        logreg.fit(X_red_train, Y_train)
+        train_red_accuracy_d[j]=logreg.score(X_red_train,Y_train)
+        test_red_accuracy_d[j]=logreg.score(X_red_test,Y_test)
+        j += <span style="color: #B452CD">1</span>
+        <span style="color: #8B008B; font-weight: bold">del</span> X_red_train,X_red_test,X_train,Y_train,X_test,Y_test <span style="color: #228B22"># delete useless data</span>
+    <span style="color: #228B22">#Average to get accuracy values</span>
+    train_accuracy[i]=np.mean(train_accuracy_d)
+    test_accuracy[i]=np.mean(test_accuracy_d)
+    train_red_accuracy[i]=np.mean(train_red_accuracy_d)
+    test_red_accuracy[i]=np.mean(test_red_accuracy_d)
+
+plt.figure(figsize=(<span style="color: #B452CD">15</span>,<span style="color: #B452CD">7</span>))
+plt.semilogx(lmbdas,train_accuracy,label=<span style="color: #CD5555">&#39;train&#39;</span>)
+plt.semilogx(lmbdas,test_accuracy,label=<span style="color: #CD5555">&#39;test&#39;</span>)
+plt.semilogx(lmbdas,train_red_accuracy,label=<span style="color: #CD5555">&#39;train reduced&#39;</span>) 
+plt.semilogx(lmbdas,test_red_accuracy,<span style="color: #CD5555">&#39;--&#39;</span>,label=<span style="color: #CD5555">&#39;test reduced&#39;</span>)
+plt.xlabel(<span style="color: #CD5555">&#39;$\\lambda$&#39;</span>)
+plt.ylabel(<span style="color: #CD5555">&#39;$\\mathrm{accuracy}$&#39;</span>)
+plt.grid()
+plt.legend()
+plt.show()
+</pre></div>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #228B22">#           Neural Network</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">seaborn</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">sns</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">warnings</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">itertools</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">PIL</span> <span style="color: #8B008B; font-weight: bold">import</span> Image
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> train_test_split
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.metrics</span> <span style="color: #8B008B; font-weight: bold">import</span> confusion_matrix,accuracy_score
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.neural_network</span> <span style="color: #8B008B; font-weight: bold">import</span> MLPClassifier
+warnings.filterwarnings(<span style="color: #CD5555">&quot;ignore&quot;</span>)
+
+<span style="color: #228B22">#Split data with 20% of test data:</span>
+np.random.seed(<span style="color: #B452CD">2018</span>)
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = <span style="color: #B452CD">0.2</span>, random_state = <span style="color: #B452CD">66</span>)
+
+<span style="color: #228B22"># Define the learning rate, hyperparameter using NUMPY </span>
+eta_vals = np.logspace(-<span style="color: #B452CD">5</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">7</span>)
+lmbd_vals = np.logspace(-<span style="color: #B452CD">5</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">7</span>)
+n_hidden_neurons = <span style="color: #B452CD">50</span>
+epochs = <span style="color: #B452CD">100</span>
+<span style="color: #228B22"># Use scikit learn for neural network </span>
+DNN_scikit = np.zeros((<span style="color: #658b00">len</span>(eta_vals), <span style="color: #658b00">len</span>(lmbd_vals)), dtype=<span style="color: #658b00">object</span>)
+<span style="color: #8B008B; font-weight: bold">for</span> i, eta <span style="color: #8B008B">in</span> <span style="color: #658b00">enumerate</span>(eta_vals):
+    <span style="color: #8B008B; font-weight: bold">for</span> j, lmbd <span style="color: #8B008B">in</span> <span style="color: #658b00">enumerate</span>(lmbd_vals):
+        dnn = MLPClassifier(hidden_layer_sizes=(n_hidden_neurons), activation=<span style="color: #CD5555">&#39;logistic&#39;</span>,
+                            alpha=lmbd, learning_rate_init=eta, max_iter=epochs, solver=<span style="color: #CD5555">&#39;adam&#39;</span>)
+        dnn.fit(X_train, y_train)
+        DNN_scikit[i][j] = dnn
+        <span style="color: #228B22"># just uncomment below to print the accuracy scores</span>
+        <span style="color: #228B22">#print(&quot;Learning rate  = &quot;, eta)</span>
+        <span style="color: #228B22">#print(&quot;Lambda = &quot;, lmbd)</span>
+        <span style="color: #228B22">#print(&quot;Accuracy score on test set: &quot;, dnn.score(X_test, y_test))</span>
+        <span style="color: #228B22">#print()</span>
+
+        
+<span style="color: #228B22">#Plot the accuracy as function of learning rate and hyperparameter</span>
+<span style="color: #228B22"># just uncomment the lines below to generate the plots (ctrl + /)</span>
+
+sns.set() 
+train_accuracy = np.zeros((<span style="color: #658b00">len</span>(eta_vals), <span style="color: #658b00">len</span>(lmbd_vals)))
+test_accuracy = np.zeros((<span style="color: #658b00">len</span>(eta_vals), <span style="color: #658b00">len</span>(lmbd_vals)))
+
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(eta_vals)):
+     <span style="color: #8B008B; font-weight: bold">for</span> j <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(lmbd_vals)):
+         dnn = DNN_scikit[i][j]
+         train_pred = dnn.predict(X_train) 
+         test_pred = dnn.predict(X_test)
+         train_accuracy[i][j] = accuracy_score(y_train, train_pred)
+         test_accuracy[i][j] = accuracy_score(y_test, test_pred)
+        
+fig, ax = plt.subplots(figsize = (<span style="color: #B452CD">10</span>, <span style="color: #B452CD">10</span>))        
+sns.heatmap(train_accuracy, annot=<span style="color: #658b00">True</span>,annot_kws={<span style="color: #CD5555">&quot;size&quot;</span>: <span style="color: #B452CD">18</span>}, ax=ax, cmap=<span style="color: #CD5555">&quot;viridis&quot;</span>)
+ax.set_title(<span style="color: #CD5555">&quot;Training Accuracy&quot;</span>,fontsize=<span style="color: #B452CD">18</span>)
+ax.set_ylabel(<span style="color: #CD5555">&quot;$\eta$&quot;</span>,fontsize=<span style="color: #B452CD">18</span>)
+ax.set_yticklabels(eta_vals)
+ax.set_xlabel(<span style="color: #CD5555">&quot;$\lambda$&quot;</span>,fontsize=<span style="color: #B452CD">18</span>)
+ax.set_xticklabels(lmbd_vals)
+plt.tick_params(labelsize=<span style="color: #B452CD">18</span>)
+ 
+fig, ax = plt.subplots(figsize = (<span style="color: #B452CD">10</span>, <span style="color: #B452CD">10</span>))
+sns.heatmap(test_accuracy, annot=<span style="color: #658b00">True</span>,annot_kws={<span style="color: #CD5555">&quot;size&quot;</span>: <span style="color: #B452CD">18</span>}, ax=ax, cmap=<span style="color: #CD5555">&quot;viridis&quot;</span>)
+ax.set_title(<span style="color: #CD5555">&quot;Test Accuracy&quot;</span>,fontsize=<span style="color: #B452CD">18</span>)
+ax.set_ylabel(<span style="color: #CD5555">&quot;$\eta$&quot;</span>,fontsize=<span style="color: #B452CD">18</span>)
+ax.set_yticklabels(eta_vals)
+ax.set_xlabel(<span style="color: #CD5555">&quot;$\lambda$&quot;</span>,fontsize=<span style="color: #B452CD">18</span>)
+ax.set_xticklabels(lmbd_vals)
+plt.tick_params(labelsize=<span style="color: #B452CD">18</span>)
+plt.show()        
+
+<span style="color: #228B22">#Plot confusion matrix at optimal values of learning rate and hyperameter</span>
+<span style="color: #228B22"># just uncomment the lines below to generate the plots (ctrl + /)</span>
+
+dnn = MLPClassifier(hidden_layer_sizes=(n_hidden_neurons), activation=<span style="color: #CD5555">&#39;logistic&#39;</span>,alpha=<span style="color: #B452CD">0.001</span>, learning_rate_init=<span style="color: #B452CD">0.001</span>, max_iter=epochs, solver=<span style="color: #CD5555">&#39;adam&#39;</span>)
+dnn.fit(X_train,y_train)
+y_pred=dnn.predict(X_test)
+fig1, ax = plt.subplots(figsize = (<span style="color: #B452CD">13</span>,<span style="color: #B452CD">10</span>))
+sns.heatmap(confusion_matrix(y_test,y_pred),annot=<span style="color: #658b00">True</span>,fmt = <span style="color: #CD5555">&quot;d&quot;</span>,linecolor=<span style="color: #CD5555">&quot;k&quot;</span>,linewidths=<span style="color: #B452CD">3</span>)
+ax.set_xlabel(<span style="color: #CD5555">&#39;True label&#39;</span>,fontsize=<span style="color: #B452CD">18</span>)
+ax.set_ylabel(<span style="color: #CD5555">&#39;Predicted label&#39;</span>,fontsize=<span style="color: #B452CD">18</span>)
+ax.set_title(<span style="color: #CD5555">&quot;CONFUSION MATRIX&quot;</span>,fontsize=<span style="color: #B452CD">20</span>)
+plt.tick_params(labelsize=<span style="color: #B452CD">18</span>)
+plt.show()
+<span style="color: #228B22"># Feature importance --&gt;weights</span>
+coef=dnn.coefs_[<span style="color: #B452CD">0</span>]
+<span style="color: #8B008B; font-weight: bold">print</span> (coef)
+</pre></div>
 </section>
 
 

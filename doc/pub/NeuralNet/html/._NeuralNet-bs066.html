@@ -126,22 +126,28 @@ Automatically generated HTML file from DocOnce source
               ('Using TensorFlow backend', 2, None, '___sec56'),
               ('Optimizing and using gradient descent', 2, None, '___sec57'),
               ('Using Keras', 2, None, '___sec58'),
-              ('Which activation function should I use?', 2, None, '___sec59'),
+              ('The Breast Cancer Data, now with Keras', 2, None, '___sec59'),
+              ('Which activation function should I use?', 2, None, '___sec60'),
               ('Is the Logistic activation function (Sigmoid)  our choice?',
                2,
                None,
-               '___sec60'),
-              ('The derivative of the Logistic funtion', 2, None, '___sec61'),
-              ('The RELU function family', 2, None, '___sec62'),
-              ('Which activation function should we use?', 2, None, '___sec63'),
+               '___sec61'),
+              ('The derivative of the Logistic funtion', 2, None, '___sec62'),
+              ('The RELU function family', 2, None, '___sec63'),
+              ('Which activation function should we use?', 2, None, '___sec64'),
               ('A top-down perspective on Neural networks',
                2,
                None,
-               '___sec64'),
+               '___sec65'),
               ('Limitations of supervised learning with deep networks',
                2,
                None,
-               '___sec65')]}
+               '___sec66'),
+              ('Examples: Pulsar identification', 2, None, '___sec67'),
+              ('Preprocessing and Statistical Analysis of the Data',
+               3,
+               None,
+               '___sec68')]}
 end of tocinfo -->
 
 <body>
@@ -238,13 +244,16 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="._NeuralNet-bs057.html#___sec56" style="font-size: 80%;"><b>Using TensorFlow backend</b></a></li>
      <!-- navigation toc: --> <li><a href="._NeuralNet-bs058.html#___sec57" style="font-size: 80%;"><b>Optimizing and using gradient descent</b></a></li>
      <!-- navigation toc: --> <li><a href="._NeuralNet-bs059.html#___sec58" style="font-size: 80%;"><b>Using Keras</b></a></li>
-     <!-- navigation toc: --> <li><a href="._NeuralNet-bs060.html#___sec59" style="font-size: 80%;"><b>Which activation function should I use?</b></a></li>
-     <!-- navigation toc: --> <li><a href="._NeuralNet-bs061.html#___sec60" style="font-size: 80%;"><b>Is the Logistic activation function (Sigmoid)  our choice?</b></a></li>
-     <!-- navigation toc: --> <li><a href="._NeuralNet-bs062.html#___sec61" style="font-size: 80%;"><b>The derivative of the Logistic funtion</b></a></li>
-     <!-- navigation toc: --> <li><a href="._NeuralNet-bs063.html#___sec62" style="font-size: 80%;"><b>The RELU function family</b></a></li>
-     <!-- navigation toc: --> <li><a href="._NeuralNet-bs064.html#___sec63" style="font-size: 80%;"><b>Which activation function should we use?</b></a></li>
-     <!-- navigation toc: --> <li><a href="._NeuralNet-bs065.html#___sec64" style="font-size: 80%;"><b>A top-down perspective on Neural networks</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec65" style="font-size: 80%;"><b>Limitations of supervised learning with deep networks</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs060.html#___sec59" style="font-size: 80%;"><b>The Breast Cancer Data, now with Keras</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs061.html#___sec60" style="font-size: 80%;"><b>Which activation function should I use?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs062.html#___sec61" style="font-size: 80%;"><b>Is the Logistic activation function (Sigmoid)  our choice?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs063.html#___sec62" style="font-size: 80%;"><b>The derivative of the Logistic funtion</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs064.html#___sec63" style="font-size: 80%;"><b>The RELU function family</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs065.html#___sec64" style="font-size: 80%;"><b>Which activation function should we use?</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec65" style="font-size: 80%;"><b>A top-down perspective on Neural networks</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs067.html#___sec66" style="font-size: 80%;"><b>Limitations of supervised learning with deep networks</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs068.html#___sec67" style="font-size: 80%;"><b>Examples: Pulsar identification</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs068.html#___sec68" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Preprocessing and Statistical Analysis of the Data</a></li>
 
         </ul>
       </li>
@@ -258,33 +267,48 @@ MathJax.Hub.Config({
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
 
 <a name="part0066"></a>
-<!-- !split -->
+<!-- !split  -->
 
-<h2 id="___sec65" class="anchor">Limitations of supervised learning with deep networks </h2>
-
-<p>
-Like all statistical methods, supervised learning using neural
-networks has important limitations. This is especially important when
-one seeks to apply these methods, especially to physics problems. Like
-all tools, DNNs are not a universal solution. Often, the same or
-better performance on a task can be achieved by using a few
-hand-engineered features (or even a collection of random
-features).
+<h2 id="___sec65" class="anchor">A top-down perspective on Neural networks </h2>
 
 <p>
-Here we list some of the important limitations of supervised neural network based models. 
+The first thing we would like to do is divide the data into two or three
+parts. A training set, a validation or dev (development) set, and a
+test set. The test set is the data on which we want to make
+predictions. The dev set is a subset of the training data we use to
+check how well we are doing out-of-sample, after training the model on
+the training dataset. We use the validation error as a proxy for the
+test error in order to make tweaks to our model. It is crucial that we
+do not use any of the test data to train the algorithm. This is a
+cardinal sin in ML. Then:
 
 <ul>
-<li> <b>Need labeled data</b>. All supervised learning methods, DNNs for supervised learning require labeled data. Often, labeled data is harder to acquire than unlabeled data (e.g. one must pay for human experts to label images).</li>
-<li> <b>Supervised neural networks are extremely data intensive.</b> DNNs are data hungry. They perform best when data is plentiful. This is doubly so for supervised methods where the data must also be labeled. The utility of DNNs is extremely limited if data is hard to acquire or the datasets are small (hundreds to a few thousand samples). In this case, the performance of other methods that utilize hand-engineered features can exceed that of DNNs.</li>
-<li> <b>Homogeneous data.</b> Almost all DNNs deal with homogeneous data of one type. It is very hard to design architectures that mix and match data types (i.e.&nbsp;some continuous variables, some discrete variables, some time series). In applications beyond images, video, and language, this is often what is required. In contrast, ensemble models like random forests or gradient-boosted trees have no difficulty handling mixed data types.</li>
-<li> <b>Many problems are not about prediction.</b> In natural science we are often interested in learning something about the underlying distribution that generates the data. In this case, it is often difficult to cast these ideas in a supervised learning setting. While the problems are related, it is possible to make good predictions with a <em>wrong</em> model. The model might or might not be useful for understanding the underlying science.</li>
+<li> Estimate optimal error rate</li>
+<li> Minimize underfitting (bias) on training data set.</li>
+<li> Make sure you are not overfitting.</li>
 </ul>
 
-Some of these remarks are particular to DNNs, others are shared by all supervised learning methods. This motivates the use of unsupervised methods which in part circumvent these problems.
+If the validation and test sets are drawn from the same distributions,
+then a good performance on the validation set should lead to similarly
+good performance on the test set.
 
 <p>
+However, sometimes
+the training data and test data differ in subtle ways because, for
+example, they are collected using slightly different methods, or
+because it is cheaper to collect data in one way versus another. In
+this case, there can be a mismatch between the training and test
+data. This can lead to the neural network overfitting these small
+differences between the test and training sets, and a poor performance
+on the test set despite having a good performance on the validation
+set. To rectify this, Andrew Ng suggests making two validation or dev
+sets, one constructed from the training data and one constructed from
+the test data. The difference between the performance of the algorithm
+on these two validation sets quantifies the train-test mismatch. This
+can serve as another important diagnostic when using DNNs for
+supervised learning.
 
+<p>
 <p>
 <!-- navigation buttons at the bottom of the page -->
 <ul class="pagination">
@@ -300,6 +324,9 @@ Some of these remarks are particular to DNNs, others are shared by all supervise
   <li><a href="._NeuralNet-bs064.html">65</a></li>
   <li><a href="._NeuralNet-bs065.html">66</a></li>
   <li class="active"><a href="._NeuralNet-bs066.html">67</a></li>
+  <li><a href="._NeuralNet-bs067.html">68</a></li>
+  <li><a href="._NeuralNet-bs068.html">69</a></li>
+  <li><a href="._NeuralNet-bs067.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->
 

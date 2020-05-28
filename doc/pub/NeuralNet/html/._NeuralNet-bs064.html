@@ -126,22 +126,28 @@ Automatically generated HTML file from DocOnce source
               ('Using TensorFlow backend', 2, None, '___sec56'),
               ('Optimizing and using gradient descent', 2, None, '___sec57'),
               ('Using Keras', 2, None, '___sec58'),
-              ('Which activation function should I use?', 2, None, '___sec59'),
+              ('The Breast Cancer Data, now with Keras', 2, None, '___sec59'),
+              ('Which activation function should I use?', 2, None, '___sec60'),
               ('Is the Logistic activation function (Sigmoid)  our choice?',
                2,
                None,
-               '___sec60'),
-              ('The derivative of the Logistic funtion', 2, None, '___sec61'),
-              ('The RELU function family', 2, None, '___sec62'),
-              ('Which activation function should we use?', 2, None, '___sec63'),
+               '___sec61'),
+              ('The derivative of the Logistic funtion', 2, None, '___sec62'),
+              ('The RELU function family', 2, None, '___sec63'),
+              ('Which activation function should we use?', 2, None, '___sec64'),
               ('A top-down perspective on Neural networks',
                2,
                None,
-               '___sec64'),
+               '___sec65'),
               ('Limitations of supervised learning with deep networks',
                2,
                None,
-               '___sec65')]}
+               '___sec66'),
+              ('Examples: Pulsar identification', 2, None, '___sec67'),
+              ('Preprocessing and Statistical Analysis of the Data',
+               3,
+               None,
+               '___sec68')]}
 end of tocinfo -->
 
 <body>
@@ -238,13 +244,16 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="._NeuralNet-bs057.html#___sec56" style="font-size: 80%;"><b>Using TensorFlow backend</b></a></li>
      <!-- navigation toc: --> <li><a href="._NeuralNet-bs058.html#___sec57" style="font-size: 80%;"><b>Optimizing and using gradient descent</b></a></li>
      <!-- navigation toc: --> <li><a href="._NeuralNet-bs059.html#___sec58" style="font-size: 80%;"><b>Using Keras</b></a></li>
-     <!-- navigation toc: --> <li><a href="._NeuralNet-bs060.html#___sec59" style="font-size: 80%;"><b>Which activation function should I use?</b></a></li>
-     <!-- navigation toc: --> <li><a href="._NeuralNet-bs061.html#___sec60" style="font-size: 80%;"><b>Is the Logistic activation function (Sigmoid)  our choice?</b></a></li>
-     <!-- navigation toc: --> <li><a href="._NeuralNet-bs062.html#___sec61" style="font-size: 80%;"><b>The derivative of the Logistic funtion</b></a></li>
-     <!-- navigation toc: --> <li><a href="._NeuralNet-bs063.html#___sec62" style="font-size: 80%;"><b>The RELU function family</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec63" style="font-size: 80%;"><b>Which activation function should we use?</b></a></li>
-     <!-- navigation toc: --> <li><a href="._NeuralNet-bs065.html#___sec64" style="font-size: 80%;"><b>A top-down perspective on Neural networks</b></a></li>
-     <!-- navigation toc: --> <li><a href="._NeuralNet-bs066.html#___sec65" style="font-size: 80%;"><b>Limitations of supervised learning with deep networks</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs060.html#___sec59" style="font-size: 80%;"><b>The Breast Cancer Data, now with Keras</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs061.html#___sec60" style="font-size: 80%;"><b>Which activation function should I use?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs062.html#___sec61" style="font-size: 80%;"><b>Is the Logistic activation function (Sigmoid)  our choice?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs063.html#___sec62" style="font-size: 80%;"><b>The derivative of the Logistic funtion</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec63" style="font-size: 80%;"><b>The RELU function family</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs065.html#___sec64" style="font-size: 80%;"><b>Which activation function should we use?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs066.html#___sec65" style="font-size: 80%;"><b>A top-down perspective on Neural networks</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs067.html#___sec66" style="font-size: 80%;"><b>Limitations of supervised learning with deep networks</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs068.html#___sec67" style="font-size: 80%;"><b>Examples: Pulsar identification</b></a></li>
+     <!-- navigation toc: --> <li><a href="._NeuralNet-bs068.html#___sec68" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Preprocessing and Statistical Analysis of the Data</a></li>
 
         </ul>
       </li>
@@ -260,22 +269,29 @@ MathJax.Hub.Config({
 <a name="part0064"></a>
 <!-- !split -->
 
-<h2 id="___sec63" class="anchor">Which activation function should we use? </h2>
+<h2 id="___sec63" class="anchor">The RELU function family </h2>
 
 <p>
-In general it seems that the ELU activation function is better than
-the leaky ReLU function (and its variants), which is better than
-ReLU. ReLU performs better than \( \tanh \) which in turn performs better
-than the logistic function.
+The ReLU activation function suffers from a problem known as the dying
+ReLUs: during training, some neurons effectively die, meaning they
+stop outputting anything other than 0.
 
 <p>
-If runtime
-performance is an issue, then you may opt for the  leaky ReLU function  over the 
-ELU function If you don&#8217;t
-want to tweak yet another hyperparameter, you may just use the default
-\( \alpha \) of \( 0.01 \) for the leaky ReLU, and \( 1 \) for ELU. If you have
-spare time and computing power, you can use cross-validation or
-bootstrap to evaluate other activation functions.
+In some cases, you may find that half of your network&#8217;s neurons are
+dead, especially if you used a large learning rate. During training,
+if a neuron&#8217;s weights get updated such that the weighted sum of the
+neuron&#8217;s inputs is negative, it will start outputting 0. When this
+happen, the neuron is unlikely to come back to life since the gradient
+of the ReLU function is 0 when its input is negative.
+
+<p>
+To solve this problem, nowadays practitioners use a  variant of the ReLU
+function, such as the leaky ReLU discussed above or the so-called
+exponential linear unit (ELU) function
+
+$$
+ELU(z) = \left\{\begin{array}{cc} \alpha\left( \exp{(z)}-1\right) & z < 0,\\  z & z \ge 0.\end{array}\right. 
+$$
 
 <p>
 <p>
@@ -295,6 +311,8 @@ bootstrap to evaluate other activation functions.
   <li class="active"><a href="._NeuralNet-bs064.html">65</a></li>
   <li><a href="._NeuralNet-bs065.html">66</a></li>
   <li><a href="._NeuralNet-bs066.html">67</a></li>
+  <li><a href="._NeuralNet-bs067.html">68</a></li>
+  <li><a href="._NeuralNet-bs068.html">69</a></li>
   <li><a href="._NeuralNet-bs065.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->

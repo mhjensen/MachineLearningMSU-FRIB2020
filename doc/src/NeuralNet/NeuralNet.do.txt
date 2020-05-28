@@ -2818,9 +2818,9 @@ for i,j in itertools.zip_longest(columns,range(length)):
 plt.show()
 !ec
 
+
 !bc pycod
-# Logistic regression  with cross-validation #
-# import packages
+# Logistc regression
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
@@ -2908,7 +2908,6 @@ for i,lmbda in enumerate(lmbdas):
     train_red_accuracy[i]=np.mean(train_red_accuracy_d)
     test_red_accuracy[i]=np.mean(test_red_accuracy_d)
 
-#plot
 plt.figure(figsize=(15,7))
 plt.semilogx(lmbdas,train_accuracy,label='train')
 plt.semilogx(lmbdas,test_accuracy,label='test')
@@ -2918,10 +2917,8 @@ plt.xlabel('$\\lambda$')
 plt.ylabel('$\\mathrm{accuracy}$')
 plt.grid()
 plt.legend()
-# # #plt.savefig('logreg.png',bbox_inches='tight')
 plt.show()
-!ec
-
+!ec 
 
 
 !bc pycod
@@ -3011,4 +3008,8 @@ plt.show()
 coef=dnn.coefs_[0]
 print (coef)
 !ec
+
+
+
+
 

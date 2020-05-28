@@ -3308,8 +3308,7 @@ plt.show()
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #228B22"># Logistic regression  with cross-validation #</span>
-<span style="color: #228B22"># import packages</span>
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #228B22"># Logistc regression</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">seaborn</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">sns</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
@@ -3397,7 +3396,6 @@ Y[:] = data[<span style="color: #CD5555">&#39;Target class&#39;</span>]
     train_red_accuracy[i]=np.mean(train_red_accuracy_d)
     test_red_accuracy[i]=np.mean(test_red_accuracy_d)
 
-<span style="color: #228B22">#plot</span>
 plt.figure(figsize=(<span style="color: #B452CD">15</span>,<span style="color: #B452CD">7</span>))
 plt.semilogx(lmbdas,train_accuracy,label=<span style="color: #CD5555">&#39;train&#39;</span>)
 plt.semilogx(lmbdas,test_accuracy,label=<span style="color: #CD5555">&#39;test&#39;</span>)
@@ -3407,7 +3405,6 @@ plt.xlabel(<span style="color: #CD5555">&#39;$\\lambda$&#39;</span>)
 plt.ylabel(<span style="color: #CD5555">&#39;$\\mathrm{accuracy}$&#39;</span>)
 plt.grid()
 plt.legend()
-<span style="color: #228B22"># # #plt.savefig(&#39;logreg.png&#39;,bbox_inches=&#39;tight&#39;)</span>
 plt.show()
 </pre></div>
 <p>

@@ -3313,8 +3313,7 @@ plt<span style="color: #666666">.</span>show()
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Logistic regression  with cross-validation #</span>
-<span style="color: #408080; font-style: italic"># import packages</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Logistc regression</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">seaborn</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">sns</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
@@ -3402,7 +3401,6 @@ Y[:] <span style="color: #666666">=</span> data[<span style="color: #BA2121">&#3
     train_red_accuracy[i]<span style="color: #666666">=</span>np<span style="color: #666666">.</span>mean(train_red_accuracy_d)
     test_red_accuracy[i]<span style="color: #666666">=</span>np<span style="color: #666666">.</span>mean(test_red_accuracy_d)
 
-<span style="color: #408080; font-style: italic">#plot</span>
 plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">15</span>,<span style="color: #666666">7</span>))
 plt<span style="color: #666666">.</span>semilogx(lmbdas,train_accuracy,label<span style="color: #666666">=</span><span style="color: #BA2121">&#39;train&#39;</span>)
 plt<span style="color: #666666">.</span>semilogx(lmbdas,test_accuracy,label<span style="color: #666666">=</span><span style="color: #BA2121">&#39;test&#39;</span>)
@@ -3412,7 +3410,6 @@ plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&#39
 plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&#39;$</span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">mathrm{accuracy}$&#39;</span>)
 plt<span style="color: #666666">.</span>grid()
 plt<span style="color: #666666">.</span>legend()
-<span style="color: #408080; font-style: italic"># # #plt.savefig(&#39;logreg.png&#39;,bbox_inches=&#39;tight&#39;)</span>
 plt<span style="color: #666666">.</span>show()
 </pre></div>
 <p>

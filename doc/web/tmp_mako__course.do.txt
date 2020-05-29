@@ -196,6 +196,21 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/svm/ipynb/svm.ipynb"
 
 
+===== Convolutional Neural Networks =====
+
+
+
+ * LaTeX PDF:
+   * For printing:
+     * "Standard one-page format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/cnn/pdf/cnn-minted.pdf"
+ * HTML:
+   * "Plain html": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/cnn/html/cnn.html"
+   * "Reveal format": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/cnn/html/cnn-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/cnn/html/cnn-bs.html"
+ * Jupyter notebook:
+   * "ipynb file": "https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/cnn/ipynb/cnn.ipynb"
+
+
 
 
 

@@ -520,9 +520,8 @@ from tensorflow.keras.layers import Dense           #This allows defining the ch
 from tensorflow.keras import optimizers             #This allows using whichever optimiser we want (sgd,adam,RMSprop)
 from tensorflow.keras import regularizers           #This allows using whichever regularizer we want (l1,l2,l1_l2)
 from tensorflow.keras.utils import to_categorical   #This allows using categorical cross entropy as the cost function
-from keras.models import Sequential
-from tensorflow.keras.layers.convolutional import Conv2D
-from tensorflow.keras.layers.convolutional import MaxPooling2D
+from tensorflow.keras.layers import Conv2D
+from tensorflow.keras.layers import MaxPooling2D
 from tensorflow.keras.layers import Flatten
 
 def create_convolutional_neural_network_keras(input_shape, receptive_field,
@@ -578,7 +577,7 @@ for i, eta in enumerate(eta_vals):
 !split
 ===== Final visualization =====
 
-!bc
+!bc pycod
 # visual representation of grid search
 # uses seaborn heatmap, could probably do this in matplotlib
 import seaborn as sns

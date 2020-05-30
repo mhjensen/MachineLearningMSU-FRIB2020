@@ -32,7 +32,7 @@ Solution to exercises for the first week will be available over the weekend.
 - Wednesday: Neural networks, essential elements and making your own code. See slides at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/NeuralNet/html/NeuralNet.html. Links to handwritten notes at https://github.com/mhjensen/MachineLearningMSU-FRIB2020/blob/master/doc/HandWrittenNotes/NotesMay26.pdf and video at 
 https://mediaspace.msu.edu/media/t/1_o04m014g
 - Thursday: More Neural networks and deep learning. Slides at https://mhjensen.github.io/MachineLearningMSU-FRIB2020/doc/pub/NeuralNet/html/NeuralNet.html.  Links to handwritten notes at https://github.com/mhjensen/MachineLearningMSU-FRIB2020/blob/master/doc/HandWrittenNotes/NotesMay28.pdf and video at https://mediaspace.msu.edu/media/t/1_rlael9c1
-- Friday: Discussion of experimental nuclear physics applications of deep learning methods, Michelle Kuchera (Davidson College). Link to video at https://mediaspace.msu.edu/media/t/1_34k2cifh
+- Friday: Discussion of experimental nuclear physics applications of deep learning methods, Michelle Kuchera (Davidson College). Link with Michelle's lecture at https://mediaspace.msu.edu/media/t/1_34k2cifh
 No exercise session the last day of the course. 
 
 Feel free to send me or Michelle Kuchera an email about ML related topics.

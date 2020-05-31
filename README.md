@@ -35,5 +35,5 @@ https://mediaspace.msu.edu/media/t/1_o04m014g
 - Friday: Discussion of experimental nuclear physics applications of deep learning methods, Michelle Kuchera (Davidson College). Link with Michelle's lecture at https://mediaspace.msu.edu/media/t/1_34k2cifh
 No exercise session the last day of the course. 
 
-Feel free to send me or Michelle Kuchera an email about ML related topics.
+Feel free to send me or Michelle Kuchera an email about ML related topics and more.
 
